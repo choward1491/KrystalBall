@@ -1,6 +1,6 @@
 //
 //  DataPrinter.hpp
-//  NumCH
+//  KrystalBall
 //
 //  Created by Christian J Howard on 11/21/15.
 //

@@ -8,7 +8,7 @@
 
 #include "ButcherIntegrator.hpp"
 #include <math.h>
-#include <libiomp/omp.h>
+//#include <libiomp/omp.h>
 
 //ButcherTable btable;
 //int numDims;

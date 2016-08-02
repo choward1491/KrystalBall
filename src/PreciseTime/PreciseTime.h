@@ -1,6 +1,6 @@
 //
 //  Time.h
-//  NumCH
+//  KrystalBall
 //
 //  Created by Christian J Howard on 10/31/15.
 //

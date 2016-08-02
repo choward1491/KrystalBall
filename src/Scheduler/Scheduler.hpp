@@ -1,6 +1,6 @@
 //
 //  Scheduler.hpp
-//  NumCH
+//  KrystalBall
 //
 //  Created by Christian J Howard on 8/9/15.
 //

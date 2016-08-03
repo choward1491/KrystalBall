@@ -8,7 +8,7 @@ Some interesting features about the simulation framework are the following:
 - Framework uses compile-time polymorphism to remove the run-time overhead for choices in one's integration scheme
 - Framework uses a precise integer-based timer to maintain perfect times no matter what frequency your simulation models operates at, in turn maintaining good time accuracy and removing accumulation of round off errors
 - Framework uses generalized integrator class structure that creates a complete and efficient integration scheme by just handing it a Butcher Tableau. This currently works for both normal and Adaptive explicit schemes that can be represented by a Butcher Tableau.
-- Framework handles managing data for simulation variables under the good, providing a simple interface for users to use in the models
+- Framework handles managing data for simulation variables under the hood, providing a simple interface for users to use in the models
 - Framework has functionality built in for writing data to files and handling the scheduling of discrete events in simulation time
 
 ## Things to Do

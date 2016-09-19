@@ -8,15 +8,40 @@ Some interesting features about the simulation framework are the following:
 - Framework uses compile-time polymorphism to remove the run-time overhead for choices in one's integration scheme
 - Framework uses a precise integer-based timer to maintain perfect times no matter what frequency your simulation models operates at, in turn maintaining good time accuracy and removing accumulation of round off errors
 - Framework uses generalized integrator class structure that creates a complete and efficient integration scheme by just handing it a Butcher Tableau. This currently works for both normal and Adaptive explicit schemes that can be represented by a Butcher Tableau.
-- Framework handles managing data for simulation variables under the hood, providing a simple interface for users to use in the models
+- Framework handles managing data for simulation variables under the good, providing a simple interface for users to use in the models
 - Framework has functionality built in for writing data to files and handling the scheduling of discrete events in simulation time
 
 ## Things to Do
 - Implement Implicit scheme builder based on Butcher Tableau
 - Modify discrete models to allow them to output a time step that changes over time, instead of requiring each model to specify a time step that will be constant over the time of the simulation
 
+## Example Integrator using Butcher Tableau Creation
+One of the cool features built into this framework is the ability to create new numerical integration schemes very easily if they can be represented by a **Butcher Tableau** (and are explicit schemes, for now!). A typical example might be implementing a numerical integration scheme for 4th order Runge-Kutta. You can find the Butcher Tableau for 4th order Runge Kutta is the following:
 
-## Example
+![Screen Shot 2016-09-18 at 10.07.33 PM.png](resources/6CC8A7C035BDBCE26B28B74B9D50BF33.png)
+
+Based on the aboe representation, we can implement this using the `ButcherIntegrator` base class in the framework doing the following:
+
+```cpp
+class RungeKutta4 : public ButcherIntegrator {
+public:
+  RungeKutta4():ButcherIntegrator(){
+    btable.resize(4);
+    btable.c(0) = 0.0; btable.a(0, 0) = 0;
+    btable.c(1) = 0.5; btable.a(1,0)  = 0.5;
+    btable.c(2) = 0.5; btable.a(2,1)  = 0.5;
+    btable.c(3) = 1.0; btable.a(3,2)  = 1.0;
+    btable.b(0,0) = 1.0/6.0;
+    btable.b(0,1) = 1.0/3.0;
+    btable.b(0,2) = 1.0/3.0;
+    btable.b(0,3) = 1.0/6.0;
+  }
+};
+```
+
+As one can see, it's pretty straight forward to implementing a new scheme, given you know the associated Butcher Tableau. Pretty cool!
+
+## Example Simulation
 Examples can be found in the directory **src/Examples**. The first basic example one will find is for a pendulum with the following dynamics:
 
 ![Screen Shot 2016-09-18 at 9.40.03 PM.png](resources/36522D3329EB73ABC47CB3C7AEC4727A.png)

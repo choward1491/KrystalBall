@@ -14,7 +14,7 @@ Some interesting features about the simulation framework are the following:
 ## Things to Do
 - Implement Implicit scheme builder based on Butcher Tableau
 - Modify discrete models to allow them to output a time step that changes over time, instead of requiring each model to specify a time step that will be constant over the time of the simulation
-<<<<<<< HEAD
+
 
 ## Example
 Examples can be found in the directory **src/Examples**. The first basic example one will find is for a pendulum with the following dynamics:
@@ -137,5 +137,3 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 ```
-=======
->>>>>>> origin/master

@@ -41,6 +41,7 @@
 		AD0F9FDA1D505CA00034D27C /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FD81D505CA00034D27C /* Timer.cpp */; };
 		AD0F9FDE1D505D460034D27C /* vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FDC1D505D460034D27C /* vec3.cpp */; };
 		AD0FA0171D50603E0034D27C /* TestAutomator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0FA0141D50603E0034D27C /* TestAutomator.cpp */; };
+		ADFC46911D8FB24600A99CCE /* BogackiShampine23.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADFC468F1D8FB24600A99CCE /* BogackiShampine23.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -185,6 +186,8 @@
 		AD0FA0141D50603E0034D27C /* TestAutomator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestAutomator.cpp; path = ../../../../dependencies/TestAutomation/TestAutomation/TestAutomator.cpp; sourceTree = "<group>"; };
 		AD0FA0151D50603E0034D27C /* TestAutomator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TestAutomator.hpp; path = ../../../../dependencies/TestAutomation/TestAutomation/TestAutomator.hpp; sourceTree = "<group>"; };
 		AD0FA0161D50603E0034D27C /* UnitTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UnitTest.hpp; path = ../../../../dependencies/TestAutomation/TestAutomation/UnitTest.hpp; sourceTree = "<group>"; };
+		ADFC468F1D8FB24600A99CCE /* BogackiShampine23.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BogackiShampine23.cpp; sourceTree = "<group>"; };
+		ADFC46901D8FB24600A99CCE /* BogackiShampine23.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BogackiShampine23.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,16 +343,8 @@
 		AD0F9F641D5059790034D27C /* ButcherIntegrator */ = {
 			isa = PBXGroup;
 			children = (
-				AD0F9F651D5059790034D27C /* ButcherIntegrator.cpp */,
-				AD0F9F661D5059790034D27C /* ButcherIntegrator.hpp */,
-				AD0F9F671D5059790034D27C /* ExplicitEuler.cpp */,
-				AD0F9F681D5059790034D27C /* ExplicitEuler.hpp */,
-				AD0F9F691D5059790034D27C /* ExplicitTrapezoidal.cpp */,
-				AD0F9F6A1D5059790034D27C /* ExplicitTrapezoidal.hpp */,
-				AD0F9F6B1D5059790034D27C /* RKCashKarp.cpp */,
-				AD0F9F6C1D5059790034D27C /* RKCashKarp.hpp */,
-				AD0F9F6D1D5059790034D27C /* RungeKutta4.cpp */,
-				AD0F9F6E1D5059790034D27C /* RungeKutta4.hpp */,
+				ADFC46891D8FB1D500A99CCE /* ExplicitSchemes */,
+				ADFC46881D8FB1C700A99CCE /* ButcherIntegratorBase */,
 			);
 			path = ButcherIntegrator;
 			sourceTree = "<group>";
@@ -717,6 +712,72 @@
 			name = TestAutomation;
 			sourceTree = "<group>";
 		};
+		ADFC46881D8FB1C700A99CCE /* ButcherIntegratorBase */ = {
+			isa = PBXGroup;
+			children = (
+				AD0F9F651D5059790034D27C /* ButcherIntegrator.cpp */,
+				AD0F9F661D5059790034D27C /* ButcherIntegrator.hpp */,
+			);
+			name = ButcherIntegratorBase;
+			sourceTree = "<group>";
+		};
+		ADFC46891D8FB1D500A99CCE /* ExplicitSchemes */ = {
+			isa = PBXGroup;
+			children = (
+				ADFC468E1D8FB21100A99CCE /* Bogacki–Shampine */,
+				ADFC468D1D8FB1FD00A99CCE /* RungeKutta4 */,
+				ADFC468C1D8FB1F200A99CCE /* RKCashKarp */,
+				ADFC468B1D8FB1E900A99CCE /* Trapezoidal */,
+				ADFC468A1D8FB1E200A99CCE /* Euler */,
+			);
+			name = ExplicitSchemes;
+			sourceTree = "<group>";
+		};
+		ADFC468A1D8FB1E200A99CCE /* Euler */ = {
+			isa = PBXGroup;
+			children = (
+				AD0F9F671D5059790034D27C /* ExplicitEuler.cpp */,
+				AD0F9F681D5059790034D27C /* ExplicitEuler.hpp */,
+			);
+			name = Euler;
+			sourceTree = "<group>";
+		};
+		ADFC468B1D8FB1E900A99CCE /* Trapezoidal */ = {
+			isa = PBXGroup;
+			children = (
+				AD0F9F691D5059790034D27C /* ExplicitTrapezoidal.cpp */,
+				AD0F9F6A1D5059790034D27C /* ExplicitTrapezoidal.hpp */,
+			);
+			name = Trapezoidal;
+			sourceTree = "<group>";
+		};
+		ADFC468C1D8FB1F200A99CCE /* RKCashKarp */ = {
+			isa = PBXGroup;
+			children = (
+				AD0F9F6B1D5059790034D27C /* RKCashKarp.cpp */,
+				AD0F9F6C1D5059790034D27C /* RKCashKarp.hpp */,
+			);
+			name = RKCashKarp;
+			sourceTree = "<group>";
+		};
+		ADFC468D1D8FB1FD00A99CCE /* RungeKutta4 */ = {
+			isa = PBXGroup;
+			children = (
+				AD0F9F6D1D5059790034D27C /* RungeKutta4.cpp */,
+				AD0F9F6E1D5059790034D27C /* RungeKutta4.hpp */,
+			);
+			name = RungeKutta4;
+			sourceTree = "<group>";
+		};
+		ADFC468E1D8FB21100A99CCE /* Bogacki–Shampine */ = {
+			isa = PBXGroup;
+			children = (
+				ADFC468F1D8FB24600A99CCE /* BogackiShampine23.cpp */,
+				ADFC46901D8FB24600A99CCE /* BogackiShampine23.hpp */,
+			);
+			name = "Bogacki–Shampine";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -823,6 +884,7 @@
 				AD0F9F821D5059790034D27C /* Constants.cpp in Sources */,
 				AD0F9F841D5059790034D27C /* DiscreteModel.cpp in Sources */,
 				AD0F9F901D5059790034D27C /* Scheduler.cpp in Sources */,
+				ADFC46911D8FB24600A99CCE /* BogackiShampine23.cpp in Sources */,
 				AD0F9F831D5059790034D27C /* DataPrinter.cpp in Sources */,
 				AD0F9FD61D505C6A0034D27C /* FileObject.cpp in Sources */,
 				AD0F9F8F1D5059790034D27C /* SimTime.cpp in Sources */,

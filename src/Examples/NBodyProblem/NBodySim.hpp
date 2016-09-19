@@ -39,8 +39,9 @@
 #include "Timer.hpp"
 #include "PointBodyModel.hpp"
 #include "RKCashKarp.hpp"
+#include "BogackiShampine23.hpp"
 
-class NBodySim : public Simulator<NBodySim,RKCashKarp> {
+class NBodySim : public Simulator<NBodySim,BogackiShampine23> {
 public:
     
     NBodySim(){

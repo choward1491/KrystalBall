@@ -37,23 +37,24 @@ class ModelState {
 public:
     // Constructors
     ModelState();
-    ModelState(double ** address, size_t numDims, size_t offset );
+    ModelState(double ** address, int numDims, int offset );
     
     // Methods to access data
-    double & operator[](size_t i);
-    const double & operator[](size_t i) const;
+    double & operator[](int i);
+    const double & operator[](int i) const;
     
     // methods to update state
     void setAddress( double ** address );
-    void setNumDims( size_t numDims );
-    void setOffset ( size_t offset_ );
+    void setNumDims( int numDims );
+    void setOffset ( int offset_ );
     
     // Method to get reference to state pointer
     double * reference(){ return *ref; }
 private:
     double ** ref;
-    size_t ndim;
-    size_t offset;
+    double * data;
+    int ndim;
+    int offset;
     
 };
 

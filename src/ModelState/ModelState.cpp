@@ -16,11 +16,12 @@ size_t ndim;
 ModelState::ModelState():ref(0),ndim(0){
     
 }
-ModelState::ModelState(double ** address, size_t numDims, size_t offset_ ){
+ModelState::ModelState(double ** address, int numDims, int offset_ ){
     try {
         ref = address;
         ndim = numDims;
         offset = offset_;
+        data = &(*ref)[offset];
         if( !ref ){ throw sim::exception("Invalid Model State Address"); }
         if( ndim == 0 ){ throw sim::exception("Model State of Invalid Size 0"); }
         
@@ -30,22 +31,26 @@ ModelState::ModelState(double ** address, size_t numDims, size_t offset_ ){
     
 }
 
-double & ModelState::operator[](size_t i){
-    return (*ref)[offset + (i%ndim)];
+double & ModelState::operator[](int i){
+    //printf("i = %i, ndim = %i\n",(int)i,ndim);
+    return data[(i%ndim)];
 }
-const double & ModelState::operator[](size_t i) const{
-    return (*ref)[offset + (i%ndim)];
+const double & ModelState::operator[](int i) const{
+    //printf("i = %i, ndim = %i\n",(int)i,ndim);
+    return data[(i%ndim)];
 }
 
 void ModelState::setAddress( double ** address ){
     ref = address;
+    data = &(*ref)[offset];
 }
-void ModelState::setNumDims( size_t numDims ){
+void ModelState::setNumDims( int numDims ){
     ndim = numDims;
 }
 
-void ModelState::setOffset( size_t offset_ ){
+void ModelState::setOffset( int offset_ ){
     offset = offset_;
+    data = &(*ref)[offset];
 }
 
     

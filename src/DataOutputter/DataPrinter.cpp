@@ -40,12 +40,12 @@ void DataPrinter::update(){
 
 void DataPrinter::writeDataToFile( FILE* file ) const{
     for (int i = 0; i < printList.size(); i++ ) {
-        fprintf(file, "%-15.8lf ",*printList[i]);
+        fprintf(file, "%-25.15lf ",*printList[i]);
     } fprintf(file, "\n");
 }
 void DataPrinter::writeNameHeader( FILE* file) const{
     for (int i = 0; i < printNames.size(); i++) {
-        fprintf(file,"%-15s ",printNames[i].c_str());
+        fprintf(file,"%-25s ",printNames[i].c_str());
     } fprintf(file,"\n");
 }
 

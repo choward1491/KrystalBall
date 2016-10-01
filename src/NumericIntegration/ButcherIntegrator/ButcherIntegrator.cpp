@@ -198,6 +198,7 @@ void ButcherIntegrator::nominalIntegration( double time, double dt , double* & i
             
             if( i != 0 ){
                 for (int k = 0; k < list.size(); k++) {
+                    list[k]->updateStateAddress(&tmp);
                     list[k]->update();
                 }
             }

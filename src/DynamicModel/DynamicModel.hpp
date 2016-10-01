@@ -181,6 +181,7 @@ public:
     // that this model uses
     //
     void assignStateAddress( double** address, size_t offset ) { state = ModelState(address,numDims(), offset); }
+    void updateStateAddress( double** address ){ state.setAddress( address ); }
     void assignRandomGenerator( Rand & gen ){ generator = &gen; }
     void assignSimState( SimState & simState_ ){ simState = &simState_; }
     

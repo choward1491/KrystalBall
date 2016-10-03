@@ -294,6 +294,11 @@ void Simulator<Sim,Integrator>::runIndividualSim(){
         }// end if-else
         
     }// end of simulation run
+    
+    if( writeSimHistory ){
+        state.dataPrinter.update();
+    }
+    
 }
 
 

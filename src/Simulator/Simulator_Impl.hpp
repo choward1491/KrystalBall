@@ -39,8 +39,8 @@
  */
 
 template<class Sim, class Integrator>
-Simulator<Sim,Integrator>::Simulator() {
-    queue.resize(40);
+Simulator<Sim,Integrator>::Simulator():m_queue() {
+    
 }
 
 
@@ -166,10 +166,12 @@ void Simulator<Sim,Integrator>::MonteCarloSetup( int monteCarloCount ){
         state.mlist.scheduler.reset();
         state.time.nullTime();
         
-        if( monteCarloCount != 0 ){
-            state.dataPrinter.newMonteCarlo();
-        }else{
-            state.dataPrinter.reset();
+        if( writeSimHistory ){
+            if( monteCarloCount != 0 ){
+                state.dataPrinter.newMonteCarlo();
+            }else{
+                state.dataPrinter.reset();
+            }
         }
     }
     
@@ -179,6 +181,7 @@ void Simulator<Sim,Integrator>::MonteCarloSetup( int monteCarloCount ){
     
 }
 
+/*
 template<class Sim, class Integrator>
 void Simulator<Sim,Integrator>::runIndividualSim(){
     DiscreteModel* model = 0;   // init temporary discrete model
@@ -227,7 +230,72 @@ void Simulator<Sim,Integrator>::runIndividualSim(){
         }
         
     }// end of simulation run
+}*/
+
+template<class Sim, class Integrator>
+void Simulator<Sim,Integrator>::runIndividualSim(){
+    DiscreteModel* model = 0;   // init temporary discrete model
+    
+    double dt = 0.0;            // init step size
+    double tn = 0;              // init new time var
+    double to = 0;              // init old time var
+    Time newt(0,1);             // init model's next time to appear var
+    Time next_t(0,1);
+    SimTime& t = state.time;   // get SimTime reference
+    Scheduler& scheduler = state.mlist.scheduler;  // reference scheduler
+    
+    while ( !finishedSimulation() ){     // loop through sim
+        
+        // get time next model will occur at
+        next_t = scheduler.getNextTime();
+        
+        // get next model from scheduler
+        model = scheduler.pop();
+        
+        // add the model into the next time it will appear
+        newt = next_t + model->getFracDt();
+        scheduler.addNewModel(newt, model);
+        
+        // add model to queue
+        m_queue.addModel(model);
+        
+        if( scheduler.getNextTime() == next_t ){
+            // if next time in scheduler equals the current model's next time,
+            // it means we have more than one discrete model being evaluated at
+            // that time, so we should hold off on integrating the differential
+            // equations until we have all the models
+            continue;
+        }else{
+            
+            // compute time step
+            tn = next_t.convert<double>();
+            dt = tn - to;
+            
+            // integrate state
+            integrator.integrate(to, dt,
+                                 state.getStateReference(),
+                                 state.mlist.getDiffeqList());
+            
+            // set new value for current time to the next time
+            to = tn;
+            
+            // update sim time to new current time
+            t.setPreciseTime(next_t);
+            
+            // update the dynamic models after time integration
+            state.mlist.updateDynamicModels();
+            
+            // update all models in queue and remove them from queue
+            while( m_queue.numModelsLeft() != 0 ){
+                model = m_queue.removeModel();
+                model->update();
+            }
+            
+        }// end if-else
+        
+    }// end of simulation run
 }
+
 
 template<class Sim, class Integrator>
 void Simulator<Sim,Integrator>::runMonteCarloSim(){

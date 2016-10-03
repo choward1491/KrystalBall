@@ -20,7 +20,7 @@ public:
     ButcherIntegrator();
     ~ButcherIntegrator();
     void setNumDimensions( int numDimensions );
-    void integrate( double time, double dt , double* & inOutState, DiffeqList & list);
+    void integrate( double time, double dt , double* inOutState, DiffeqList & list);
     void setTolerance( double tol );
     
 protected:
@@ -31,8 +31,8 @@ private:
     int numDims;
     void computeNewStep( double * y0, double* dydt, double dt, double * out);
     void computeDerivatives( double time, double * dqdt, DiffeqList & list );
-    void adaptiveIntegration( double time, double dt , double* & inOutState, DiffeqList & list );
-    void nominalIntegration( double time, double dt , double* & inOutState, DiffeqList & list );
+    void adaptiveIntegration( double time, double dt , double* inOutState, DiffeqList & list );
+    void nominalIntegration( double time, double dt , double* inOutState, DiffeqList & list );
     std::vector<double*> K;
     double * tmp;
     double *y1, *y2; // for adaptive stuff

@@ -41,7 +41,7 @@
 #include "RKCashKarp.hpp"
 #include "BogackiShampine23.hpp"
 
-class NBodySim : public Simulator<NBodySim,BogackiShampine23> {
+class NBodySim : public Simulator<NBodySim,RKCashKarp> {
 public:
     
     NBodySim(){

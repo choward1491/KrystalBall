@@ -76,31 +76,37 @@ void ButcherIntegrator::setNumDimensions( int numDimensions ){
     
 }
 
-void ButcherIntegrator::adaptiveIntegration( double time, double dt , double* & inOutState, DiffeqList & list ){
+void ButcherIntegrator::adaptiveIntegration( double time, double dt , double* inOutState, DiffeqList & list ){
     double finalTime = time + dt;
     double newTime = time;
     double maxErr = 0.0;
-    double * tmpState = inOutState;
     bool isNotDone = true;
-    inOutState = tmp;
+    
+    if( btable.isExplicit() ){
+        for (int k = 0; k < list.size(); k++) {
+            list[k]->updateStateAddress(&tmp);
+        }
+    }
     
     while( isNotDone ){
         maxErr = -1.0;
         newTime = time;
         
+        
         //#pragma omp parallel for
         for(int i = 0; i < numDims; i++ ){
-            y1[i] = tmpState[i];
-            y2[i] = tmpState[i];
+            y1[i] = inOutState[i];
+            y2[i] = inOutState[i];
         }
         
         if( btable.isExplicit() ){
+            
             for(int i = 0; i < btable.numSteps(); i++){
                 
                 // set tmp = y_n
                 //#pragma omp parallel for
                 for(int j = 0; j < numDims; j++ ){
-                    tmp[j] = tmpState[j];
+                    tmp[j] = inOutState[j];
                 }
                 
                 // compute Y = y_n + sum_{j} a(i,j) K_j
@@ -118,6 +124,7 @@ void ButcherIntegrator::adaptiveIntegration( double time, double dt , double* & 
                     
                     //#pragma omp parallel for
                     for (int k = 0; k < list.size(); k++) {
+                        list[k]->updateStateAddress(&tmp);
                         list[k]->update();
                     }
                 }
@@ -153,7 +160,7 @@ void ButcherIntegrator::adaptiveIntegration( double time, double dt , double* & 
             
             //#pragma omp parallel for
             for(int i = 0; i < numDims; i++ ){
-                tmpState[i] = y2[i];
+                inOutState[i] = y2[i];
             }
             if( isNotDone ){
                 
@@ -168,21 +175,26 @@ void ButcherIntegrator::adaptiveIntegration( double time, double dt , double* & 
         dt = fmin(new_dt,finalTime - time);
     }
     
-    // reassign correct pointer
-    inOutState = tmpState;
+    // set result
+    for (int k = 0; k < list.size(); k++) {
+        list[k]->updateStateAddress(&inOutState);
+    }
 
 }
-void ButcherIntegrator::nominalIntegration( double time, double dt , double* & inOutState, DiffeqList & list ){
-    double * tmpState = inOutState;
-    inOutState = tmp;
+void ButcherIntegrator::nominalIntegration( double time, double dt , double* inOutState, DiffeqList & list ){
     
     if( btable.isExplicit() ){
+        
+        for (int k = 0; k < list.size(); k++) {
+            list[k]->updateStateAddress(&tmp);
+        }
+        
         for(int i = 0; i < btable.numSteps(); i++){
             
             // set tmp = y_n
             //#pragma omp parallel for
             for(int j = 0; j < numDims; j++ ){
-                tmp[j] = tmpState[j];
+                tmp[j] = inOutState[j];
             }
             
             // compute Y = y_n + sum_{j} a(i,j) K_j
@@ -198,7 +210,6 @@ void ButcherIntegrator::nominalIntegration( double time, double dt , double* & i
             
             if( i != 0 ){
                 for (int k = 0; k < list.size(); k++) {
-                    list[k]->updateStateAddress(&tmp);
                     list[k]->update();
                 }
             }
@@ -215,17 +226,19 @@ void ButcherIntegrator::nominalIntegration( double time, double dt , double* & i
     for( int l = 0; l < btable.numSteps(); l++ ){
         if( btable.b(0, l) != 0.0 ){
             for(int i = 0; i < numDims; i++ ){
-                tmpState[i] += (dt*btable.b(0, l)*K[l][i]);
+                inOutState[i] += (dt*btable.b(0, l)*K[l][i]);
             }
         }
     }
     
-    // reassign correct pointer
-    inOutState = tmpState;
+    // set result
+    for (int k = 0; k < list.size(); k++) {
+        list[k]->updateStateAddress(&inOutState);
+    }
 
 }
 
-void ButcherIntegrator::integrate( double time, double dt , double* & inOutState, DiffeqList & list){
+void ButcherIntegrator::integrate( double time, double dt , double* inOutState, DiffeqList & list){
     if( btable.isAdaptive() ){
         adaptiveIntegration(time, dt, inOutState, list);
     }else{

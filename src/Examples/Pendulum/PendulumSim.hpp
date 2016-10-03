@@ -23,10 +23,10 @@ public:
     
     PendulumSim(){
         timer.start();
-        std::string historyFile("history.txt");
+        std::string historyFile("/Users/christianjhoward/history.txt");
         setSimHistoryPath(historyFile);
         state.printFrequency = 1;
-        numMC = 1;
+        numMC = 100;
         writeSimHistory = true;
         integrator.setTolerance(1e-10);
     }

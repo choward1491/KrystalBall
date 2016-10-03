@@ -7,10 +7,14 @@
 //
 
 #include <iostream>
+#include "PendulumSim.hpp"
 #include "NBodySim.hpp"
 
 int main(int argc, const char * argv[]) {
-    NBodySim nbs;
-    nbs.runSim();
+    PendulumSim sim;
+    sim.runSim();
+    
+    //NBodySim sim2;
+    //sim2.runSim();
     return 0;
 }

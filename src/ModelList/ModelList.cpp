@@ -15,6 +15,7 @@ ModelList::ModelList(){
 void ModelList::initializeModels(){
     for (int i = 0; i < diffeqList.size(); i++) {
         diffeqList[i]->initialize();
+        diffeqList[i]->update();
     }
     for (int i = 0; i < discreteList.size(); i++) {
         discreteList[i]->initialize();

@@ -94,7 +94,34 @@ protected:
     
 private:
     
-    std::vector<DiscreteModel*> queue;
+    class ModelQueue {
+    public:
+        typedef std::vector<DiscreteModel*> List;
+        
+        ModelQueue():total(0),max_size(start_size),list(start_size,0){}
+        void addModel( DiscreteModel * model ){
+            if( max_size == total ){ max_size *= 2; list.resize(max_size); }
+            list[total] = model;
+            ++total;
+        }
+        
+        DiscreteModel* removeModel(){
+            --total;
+            DiscreteModel* m = list[total];
+            list[total] = 0;
+            return m;
+        }
+        
+        int numModelsLeft() const{ return total; }
+        
+    private:
+        List list;
+        int total;
+        int max_size;
+        static const int start_size = 40;
+    };
+    
+    ModelQueue m_queue;
     void initialize();              // Method to initialize everything before running a simulation
     void initializeModels();        // method to initialize models
     void setupSimHistory();         // method to setup sim history

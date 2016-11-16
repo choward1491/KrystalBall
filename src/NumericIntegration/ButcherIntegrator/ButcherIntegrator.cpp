@@ -124,7 +124,6 @@ void ButcherIntegrator::adaptiveIntegration( double time, double dt , double* in
                     
                     //#pragma omp parallel for
                     for (int k = 0; k < list.size(); k++) {
-                        list[k]->updateStateAddress(&tmp);
                         list[k]->update();
                     }
                 }
@@ -147,7 +146,7 @@ void ButcherIntegrator::adaptiveIntegration( double time, double dt , double* in
                     y2[i] += (dt*btable.b(1, l)*K[l][i]);
                 }
             }
-            maxErr = fmax(fabs( (y2[i] - y1[i]) / y1[i] ),maxErr);
+            maxErr = fmax(fabs( (y2[i] - y1[i]) ),maxErr);
         }
         
         double new_dt = newStepSize(dt, maxErr );

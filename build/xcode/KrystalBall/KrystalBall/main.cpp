@@ -9,10 +9,21 @@
 #include <iostream>
 #include "PendulumSim.hpp"
 #include "NBodySim.hpp"
+#include "dynamic_model.hpp"
+#include "discrete_model.hpp"
+#include "sim_state.hpp"
+#include "history_printer.hpp"
 
 int main(int argc, const char * argv[]) {
-    PendulumSim sim;
-    sim.runSim();
+    //PendulumSim sim;
+    //sim.runSim();
+    
+    discrete::model<double> dmodel;
+    dynamic::model<float> fmodel;
+    sim::state<float> a;
+    print::history<float> hprint;
+    double hi = 0.0;
+    hprint.addVariableToPrint(hi);
     
     //NBodySim sim2;
     //sim2.runSim();

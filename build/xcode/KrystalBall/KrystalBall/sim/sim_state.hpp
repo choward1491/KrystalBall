@@ -33,6 +33,10 @@
 
 class Scheduler;
 
+namespace discrete {
+    template<typename T> class model;
+}
+
 namespace sim {
     
     template<typename T = double>
@@ -48,11 +52,15 @@ namespace sim {
         num_type getCurrentTime() const;
         void setCurrentTime( const num_type & t );
         Scheduler & getScheduler();
+        const Scheduler & getScheduler() const;
+        void willWriteHistory( bool trueOrFalse );
+        void writeHistoryAtRate( double rateHz );
+        void addHistoryWriterToScheduler();
+        void addDiscreteModelToScheduler( double rateHz, discrete::model<T> & model);
         
     private:
         struct Data;
         Data* data;
-        
     };
     
 }

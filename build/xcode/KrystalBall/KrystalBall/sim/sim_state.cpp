@@ -8,6 +8,10 @@
 
 #include "sim_state.hpp"
 #include "Fraction.hpp"
+#include "Scheduler.hpp"
+#include "history_printer.hpp"
+#include "PreciseTime.h"
+#include "discrete_model.hpp"
 
 namespace sim {
     
@@ -20,7 +24,33 @@ namespace sim {
         num_type* safety_ref;
         num_type* dyn_state;
         Fraction time_precise;
+        Scheduler scheduler;
+        print::history<T> data_writer;
+        bool doWriteData;
+        double writeRate;
     };
+    
+    HEADER
+    void STATE::willWriteHistory( bool trueOrFalse ){
+        data->doWriteData = trueOrFalse;
+    }
+    
+    HEADER
+    void STATE::writeHistoryAtRate( double rateHz ) {
+        data->writeRate = rateHz;
+    }
+    
+    HEADER
+    void STATE::addHistoryWriterToScheduler(){
+        if( data->doWriteData ){
+            addDiscreteModelToScheduler(data->writeRate, data->data_writer);
+        }
+    }
+    
+    HEADER
+    void STATE::addDiscreteModelToScheduler( double rateHz, discrete::model<T> & model) {
+        data->scheduler.addNewModel( Time(1.0/rateHz), &model );
+    }
     
     HEADER
     STATE::state(){
@@ -61,6 +91,16 @@ namespace sim {
     HEADER
     void STATE::setCurrentTime( const num_type & t ){
         data->time_precise = t;
+    }
+    
+    HEADER
+    Scheduler & STATE::getScheduler() {
+        return data->scheduler;
+    }
+    
+    HEADER
+    const Scheduler & STATE::getScheduler() const {
+        return data->scheduler;
     }
     
     

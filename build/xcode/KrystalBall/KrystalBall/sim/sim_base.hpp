@@ -30,10 +30,40 @@
 #ifndef sim_base_h
 #define sim_base_h
 
+namespace models {
+    template<typename T> class list;
+}
+
+
 namespace sim {
     
-    template<typename Sim, typename T = double >
+    template<typename T> class state;
     
+    template<typename Sim, typename T = double >
+    class base {
+    public:
+        
+        base();
+        ~base();
+        void run();
+        void addConfigFile( const char * filename );
+        void addConfigFile( const std::string & filename );
+        double getTime() const;
+        int getCompletedMC() const;
+        void setSimHistoryPath( const std::string & filepath );
+        void addDynamics( DynamicModel * model );
+        void addDiscrete( DiscreteModel * model , double computationFrequency );
+        void willWriteSimHistory( bool trueOrFalse );
+        
+        template<typename T>
+        T get(const std::string & param);
+        
+    protected:
+        
+    private:
+        state<T> state;
+        models::list<T> model_list;
+    };
     
     
 }

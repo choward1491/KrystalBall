@@ -31,10 +31,13 @@
 #define sim_state_hpp_
 
 
-class Scheduler;
+#include "sim_scheduler.hpp"
+#include "discrete_model.hpp"
+#include <string>
+#include <stdint.h>
 
-namespace discrete {
-    template<typename T> class model;
+namespace print {
+    template<typename T> class history;
 }
 
 namespace sim {
@@ -51,12 +54,26 @@ namespace sim {
         num_type** getStateRef();
         num_type getCurrentTime() const;
         void setCurrentTime( const num_type & t );
-        Scheduler & getScheduler();
-        const Scheduler & getScheduler() const;
+        scheduler<T> & getScheduler();
+        const scheduler<T> & getScheduler() const;
+        print::history<T> & getPrinter();
+        const print::history<T> & getPrinter() const;
+        
         void willWriteHistory( bool trueOrFalse );
-        void writeHistoryAtRate( double rateHz );
+        void writeHistoryAtRate( num_type rateHz );
+        void setSimHistoryFile( const std::string & filename );
         void addHistoryWriterToScheduler();
-        void addDiscreteModelToScheduler( double rateHz, discrete::model<T> & model);
+        void addDiscreteModelToScheduler( num_type rateHz, discrete::model<T> & model);
+        void setRNGSeed( int seed );
+        double rand();
+        uint64_t randInt();
+        double gaussRand( double mean = 0.0, double sig = 1.0 );
+        
+        
+        template<typename U>
+        U get(const std::string & param);
+        void addConfigFile( const std::string & file );
+        void addConfigFile( const char * file );
         
     private:
         struct Data;

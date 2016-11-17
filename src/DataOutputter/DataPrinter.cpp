@@ -18,7 +18,7 @@ void DataPrinter::addVariableToPrint( const double * address, const std::string 
 
 void DataPrinter::update(){
     
-    if( !file.isOpen() ){ file.openFile(outFile, FileObject::Write); }
+    if( !file.isOpen() ){ file.openFile(outFile, wrap::file::Write); }
     
     if( !hasHeader ){
         
@@ -53,7 +53,7 @@ void DataPrinter::writeNameHeader( FILE* file) const{
 
 void DataPrinter::setSimHistoryFileName( const std::string & filename ){
     outFile = filename;
-    file.openFile(outFile, FileObject::Write);
+    file.openFile(outFile, wrap::file::Write);
 }
 
 void DataPrinter::reset(){

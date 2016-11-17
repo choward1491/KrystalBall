@@ -9,6 +9,7 @@
 #include "discrete_model.hpp"
 #include "model_state.hpp"
 #include "sim_state.hpp"
+#include "PreciseTime.h"
 
 
 namespace discrete {
@@ -22,7 +23,8 @@ namespace discrete {
     struct MODEL::ModelData {
         ModelData():sim_state(nullptr),updateRate(1){}
         sim::state<T> * sim_state;
-        num_type updateRate;
+        Time updateRate;
+        Time dt;
     };
         
     HEADER
@@ -63,11 +65,22 @@ namespace discrete {
     HEADER
     void MODEL::setUpdateRate( num_type rateHz ) {
         data->updateRate = rateHz;
+        data->dt = 1.0/rateHz;
+    }
+    
+    HEADER
+    Time MODEL::getUpdateRate() const {
+        return data->updateRate;
+    }
+    
+    HEADER
+    Time MODEL::getDt() const {
+        return data->dt;
     }
     
     HEADER
     typename MODEL::num_type MODEL::getNextUpdateTime( num_type currentTime ) {
-        return currentTime + 1.0/data->updateRate;
+        return currentTime + static_cast<num_type>(data->dt);
     }
     
     HEADER

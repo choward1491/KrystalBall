@@ -43,7 +43,7 @@ namespace print {
         virtual std::string name() const;
         virtual void init();
         virtual void update();
-        void setupNewMonteCarlo() const;
+        void setFileToWriteTo( const std::string & file );
         
         template<typename U>
         void addVariableToPrint( U & var, const std::string & name );

@@ -30,6 +30,11 @@ namespace models {
     LIST::list():data(new Data()) { }
     
     HEADER
+    LIST::~list() {
+        if( data ){ delete data; data = 0; }
+    }
+    
+    HEADER
     void LIST::init(){
         for(int i = 0; i < data->dynamic_m.size(); ++i ){
             data->dynamic_m[i]->init();
@@ -45,9 +50,8 @@ namespace models {
     }
     
     HEADER
-    void LIST::addDiscreteModel( dscrt_m & model, double freqHz ){
+    void LIST::addDiscreteModel( dscrt_m & model ){
         data->discrete_m.push_back(&model);
-        // add model to scheduler
     }
     
     HEADER

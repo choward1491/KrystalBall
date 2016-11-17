@@ -1,8 +1,8 @@
 //
-//  discrete.hpp
+//  sim_scheduler.hpp
 //  KrystalBall
 //
-//  Created by Christian J Howard on 11/13/16.
+//  Created by Christian J Howard on 11/16/16.
 //
 //  The MIT License (MIT)
 //    Copyright © 2016 Christian Howard. All rights reserved.
@@ -27,45 +27,25 @@
 //
 //
 
-#ifndef discrete_hpp
-#define discrete_hpp
+#ifndef sim_scheduler_hpp
+#define sim_scheduler_hpp
 
-#include <string>
-#include <memory>
+#include "Heap.hpp"
+#include "discrete_model.hpp"
 
-typedef class Fraction Time;
-namespace local { template<typename T> class state; }
-namespace sim   { template<typename T> class state; }
-namespace print { template<typename T> class history; }
+class Fraction;
+typedef Fraction Time;
 
-namespace discrete {
-    
-    template<typename T = double>
-    class model {
+namespace sim {
+
+    template<typename T>
+    class scheduler : public MinHeap<Time, discrete::model<T>* > {
     public:
-        typedef T num_type;
-        typedef local::state<T> ModelState;
-        
-        model();
-        virtual ~model();
-        virtual std::string name() const;
-        virtual void init();
-        virtual void update();
-        virtual void setupPrintData( print::history<T> & p );
-        void setCentralSimState( sim::state<T> & cs );
-        void setUpdateRate( num_type rateHz );
-        Time getUpdateRate() const;
-        Time getDt() const;
-        virtual num_type getNextUpdateTime( num_type currentTime );
-        
-    protected:
-        sim::state<T> & getCentralSimState();
-        
-    private:
-        
-        struct ModelData;
-        std::unique_ptr<ModelData> data;
+        typedef MinHeap<Time, discrete::model<T>* > parent;
+        Time getNextTime();
+        void addNewModel( Time firstTime, discrete::model<T>* model );
+        void reset();
     };
-}
 
-#endif /* discrete_hpp */
+}
+#endif /* sim_scheduler_hpp */

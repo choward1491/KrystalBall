@@ -47,7 +47,11 @@ namespace print {
     
     HEADER
     void HISTORY::init() {
-        
+        if( !data->file.isOpen() ){
+            data->file.openFile(data->outFile,wrap::file::Write);
+        }else{
+            fprintf(data->file, "\n");
+        }
     }
     
     HEADER
@@ -68,10 +72,8 @@ namespace print {
     }
     
     HEADER
-    void HISTORY::setupNewMonteCarlo() const {
-        if( data->file.isOpen() ){
-            fprintf(data->file, "\n");
-        }
+    void HISTORY::setFileToWriteTo( const std::string & file ) {
+        data->outFile = file;
     }
     
 

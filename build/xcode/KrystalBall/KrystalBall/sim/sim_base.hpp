@@ -30,42 +30,63 @@
 #ifndef sim_base_h
 #define sim_base_h
 
-namespace models {
-    template<typename T> class list;
-}
-
+#include "model_list.hpp"
+#include "sim_state.hpp"
+#include "discrete_model.hpp"
+#include "dynamic_model.hpp"
 
 namespace sim {
-    
-    template<typename T> class state;
     
     template<typename Sim, typename T = double >
     class base {
     public:
-        
+        typedef T num_type;
         base();
         ~base();
         void run();
         void addConfigFile( const char * filename );
         void addConfigFile( const std::string & filename );
-        double getTime() const;
+        num_type getTime() const;
         int getCompletedMC() const;
         void setSimHistoryPath( const std::string & filepath );
-        void addDynamics( DynamicModel * model );
-        void addDiscrete( DiscreteModel * model , double computationFrequency );
+        void addDynamics( dynamic::model<T> & model );
+        void addDiscrete( discrete::model<T> & model , num_type computationFrequency );
         void willWriteSimHistory( bool trueOrFalse );
         
-        template<typename T>
-        T get(const std::string & param);
+        template<typename U>
+        U get(const std::string & param) { return state.get(param); }
         
     protected:
         
     private:
         state<T> state;
         models::list<T> model_list;
+        int numCompleteMC;
+        bool didSetup;
+        
+        void initialize();              // Method to initialize everything before running a simulation
+        void initializeModels();        // method to initialize models
+        void setupSimHistory();         // method to setup sim history
+        void MonteCarloSetup( int monteCarloCount ); // method to setup ith monte carlo draws
+        void runIndividualSim();        // method to run an individual simulation
+        void runMonteCarloSim();        // method to run a whole Monte Carlo sim (calls runIndividualSim)
+        
+        // CRTP methods to be implemented
+        //bool MonteCarloNotDone();
+        //void linkModelsToSim();         // method to link models to sim
+        //void connectModelsTogether();   // method to connect models together, if necessary
+        //bool finishedSimulation();      // method to return whether the sim has finished
+        //void finalizeMonteCarloRun();   // method to finalize a monte carlo run
+        //void finalize();                // method to finalize the whole completed simulation
+        //void buildTotalDynamicState();  // method to construct the total data associated with dynamic models
+        
     };
     
     
 }
+
+
+#include "sim_base_details.hpp"
+
 
 #endif /* sim_base_h */

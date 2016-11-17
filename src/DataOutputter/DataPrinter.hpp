@@ -34,7 +34,7 @@
 #include "DiscreteModel.hpp"
 #include <vector>
 #include <string>
-#include "FileObject.hpp"
+#include "FileWrap.hpp"
 
 typedef std::vector<const double*> PrintValueList;
 typedef std::vector<std::string> PrintNames;
@@ -104,7 +104,7 @@ private:
     //
     PrintValueList  printList;
     PrintNames      printNames;
-    FileObject      file;
+    wrap::file      file;
     std::string     outFile;
     bool hasHeader;
     

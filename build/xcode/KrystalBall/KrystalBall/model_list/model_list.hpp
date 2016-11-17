@@ -55,11 +55,13 @@ namespace models {
         typedef discrete::model<T>      dscrt_m;
         typedef std::vector<dyn_m*>     DynamicList ;
         typedef std::vector<dscrt_m*>   DiscreteList;
+        typedef T num_type;
         
         list();
+        ~list();
         void init();
         void addDynamicModel ( dyn_m & model );
-        void addDiscreteModel( dscrt_m & model, double freqHz );
+        void addDiscreteModel( dscrt_m & model);
         void setCentralSimState( sim::state<T> & cs );
         int  getTotalNumberStates() const;
         const DynamicList & getDynamicList() const;
@@ -67,7 +69,7 @@ namespace models {
         
     private:
         struct Data;
-        std::unique_ptr<Data> data;
+        Data* data;
     };
 }
 

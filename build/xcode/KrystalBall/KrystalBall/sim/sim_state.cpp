@@ -7,11 +7,14 @@
 //
 
 #include "sim_state.hpp"
-#include "Fraction.hpp"
-#include "Scheduler.hpp"
+#include "sim_scheduler.hpp"
 #include "history_printer.hpp"
 #include "PreciseTime.h"
-#include "discrete_model.hpp"
+#include "Parser.hpp"
+#include <vector>
+#include "RandomNumberGenerator.hpp"
+
+typedef RandomNumberGenerator RNG;
 
 namespace sim {
     
@@ -23,12 +26,40 @@ namespace sim {
         Data():safety_ref(nullptr),dyn_state(nullptr){}
         num_type* safety_ref;
         num_type* dyn_state;
-        Fraction time_precise;
-        Scheduler scheduler;
+        Time time = 0.0;
+        scheduler<T> scheduler;
         print::history<T> data_writer;
-        bool doWriteData;
-        double writeRate;
+        bool doWriteData = false;
+        num_type writeRate;
+        Parser parser;
+        RNG rng;
     };
+    
+    HEADER
+    print::history<T> & STATE::getPrinter() {
+        return data->data_writer;
+    }
+    
+    HEADER
+    const print::history<T> & STATE::getPrinter() const {
+        return data->data_writer;
+    }
+    
+    HEADER
+    void STATE::setRNGSeed( int seed ) {
+        data->rng.setSeed(seed);
+    }
+    
+    HEADER
+    double STATE::rand() { return data->rng.rand(); }
+    
+    HEADER
+    uint64_t STATE::randInt() { return data->rng.randInt(); }
+    
+    HEADER
+    double STATE::gaussRand( double mean, double sig ) {
+        return data->rng.gaussRand(mean,sig);
+    }
     
     HEADER
     void STATE::willWriteHistory( bool trueOrFalse ){
@@ -36,7 +67,7 @@ namespace sim {
     }
     
     HEADER
-    void STATE::writeHistoryAtRate( double rateHz ) {
+    void STATE::writeHistoryAtRate( num_type rateHz ) {
         data->writeRate = rateHz;
     }
     
@@ -48,7 +79,13 @@ namespace sim {
     }
     
     HEADER
-    void STATE::addDiscreteModelToScheduler( double rateHz, discrete::model<T> & model) {
+    void STATE::setSimHistoryFile( const std::string & filename ) {
+        data->data_writer.setFileToWriteTo(filename);
+    }
+    
+    HEADER
+    void STATE::addDiscreteModelToScheduler( num_type rateHz, discrete::model<T> & model) {
+        model.setUpdateRate( rateHz );
         data->scheduler.addNewModel( Time(1.0/rateHz), &model );
     }
     
@@ -85,24 +122,93 @@ namespace sim {
     
     HEADER
     typename STATE::num_type STATE::getCurrentTime() const{
-        return static_cast<num_type>(data->time_precise);
+        return static_cast<num_type>(data->time);
     }
     
     HEADER
     void STATE::setCurrentTime( const num_type & t ){
-        data->time_precise = t;
+        data->time = t;
     }
     
     HEADER
-    Scheduler & STATE::getScheduler() {
+    scheduler<T> & STATE::getScheduler() {
         return data->scheduler;
     }
     
     HEADER
-    const Scheduler & STATE::getScheduler() const {
+    const scheduler<T> & STATE::getScheduler() const {
         return data->scheduler;
     }
     
+    HEADER
+    void STATE::addConfigFile( const std::string & file ) {
+        data->parser.parse(file.c_str());
+    }
+    
+    HEADER
+    void STATE::addConfigFile( const char * file ) {
+        data->parser.parse(file);
+    }
+    
+    template<>
+    template<>
+    int state<float>::get(const std::string & param) {
+        return data->parser.getValueFrom<double>( param );
+    }
+    
+    template<>
+    template<>
+    float state<float>::get(const std::string & param) {
+        return data->parser.getValueFrom<double>( param );
+    }
+    
+    template<>
+    template<>
+    bool state<float>::get(const std::string & param) {
+        return data->parser.getValueFrom<bool>( param );
+    }
+    
+    template<>
+    template<>
+    std::vector<double> state<float>::get(const std::string & param) {
+        return data->parser.getValueFrom< std::vector<double> >( param );
+    }
+    
+    template<>
+    template<>
+    std::string state<float>::get(const std::string & param) {
+        return data->parser.getValueFrom< std::string >( param );
+    }
+    
+    template<>
+    template<>
+    int state<double>::get(const std::string & param) {
+        return data->parser.getValueFrom<double>( param );
+    }
+    
+    template<>
+    template<>
+    float state<double>::get(const std::string & param) {
+        return data->parser.getValueFrom<double>( param );
+    }
+    
+    template<>
+    template<>
+    bool state<double>::get(const std::string & param) {
+        return data->parser.getValueFrom<bool>( param );
+    }
+    
+    template<>
+    template<>
+    std::vector<double> state<double>::get(const std::string & param) {
+        return data->parser.getValueFrom< std::vector<double> >( param );
+    }
+    
+    template<>
+    template<>
+    std::string state<double>::get(const std::string & param) {
+        return data->parser.getValueFrom< std::string >( param );
+    }
     
     template class state<float>;
     template class state<double>;

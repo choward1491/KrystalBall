@@ -30,14 +30,11 @@
 		AD0F9FBB1D505A0A0034D27C /* HeatEquationSim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FA41D505A0A0034D27C /* HeatEquationSim.cpp */; };
 		AD0F9FBC1D505A0A0034D27C /* HodgkinHuxleyNeuronModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FA71D505A0A0034D27C /* HodgkinHuxleyNeuronModel.cpp */; };
 		AD0F9FBD1D505A0A0034D27C /* NeuronSim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FA91D505A0A0034D27C /* NeuronSim.cpp */; };
-		AD0F9FBE1D505A0A0034D27C /* PointBodyModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FAD1D505A0A0034D27C /* PointBodyModel.cpp */; };
-		AD0F9FBF1D505A0A0034D27C /* NonlinearModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FB01D505A0A0034D27C /* NonlinearModel.cpp */; };
 		AD0F9FC01D505A0A0034D27C /* Pendulum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FB41D505A0A0034D27C /* Pendulum.cpp */; };
 		AD0F9FC11D505A0A0034D27C /* PendulumSim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FB61D505A0A0034D27C /* PendulumSim.cpp */; };
 		AD0F9FC61D505B660034D27C /* Fraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FC41D505B660034D27C /* Fraction.cpp */; };
 		AD0F9FCA1D505B7F0034D27C /* RandomNumberGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FC81D505B7F0034D27C /* RandomNumberGenerator.cpp */; };
 		AD0F9FD31D505C600034D27C /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FD11D505C600034D27C /* Parser.cpp */; };
-		AD0F9FDE1D505D460034D27C /* vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FDC1D505D460034D27C /* vec3.cpp */; };
 		AD0FA0171D50603E0034D27C /* TestAutomator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0FA0141D50603E0034D27C /* TestAutomator.cpp */; };
 		ADBAF9141DD93CFD00634FF1 /* dynamic_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF9121DD93CFD00634FF1 /* dynamic_model.cpp */; };
 		ADBAF9171DD93D1100634FF1 /* discrete_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF9151DD93D1100634FF1 /* discrete_model.cpp */; };
@@ -47,6 +44,7 @@
 		ADBAF92F1DD989E200634FF1 /* history_printer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF92D1DD989E200634FF1 /* history_printer.cpp */; };
 		ADBAF9351DDC15BF00634FF1 /* FileWrap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF9331DDC15BF00634FF1 /* FileWrap.cpp */; };
 		ADBAF9381DDC15D600634FF1 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF9361DDC15D600634FF1 /* Timer.cpp */; };
+		ADBAF96F1DDD638F00634FF1 /* sim_scheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF96D1DDD638F00634FF1 /* sim_scheduler.cpp */; };
 		ADFC46911D8FB24600A99CCE /* BogackiShampine23.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADFC468F1D8FB24600A99CCE /* BogackiShampine23.cpp */; };
 /* End PBXBuildFile section */
 
@@ -123,12 +121,6 @@
 		AD0F9FA81D505A0A0034D27C /* HodgkinHuxleyNeuronModel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HodgkinHuxleyNeuronModel.hpp; sourceTree = "<group>"; };
 		AD0F9FA91D505A0A0034D27C /* NeuronSim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NeuronSim.cpp; sourceTree = "<group>"; };
 		AD0F9FAA1D505A0A0034D27C /* NeuronSim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NeuronSim.hpp; sourceTree = "<group>"; };
-		AD0F9FAC1D505A0A0034D27C /* NBodySim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NBodySim.hpp; sourceTree = "<group>"; };
-		AD0F9FAD1D505A0A0034D27C /* PointBodyModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointBodyModel.cpp; sourceTree = "<group>"; };
-		AD0F9FAE1D505A0A0034D27C /* PointBodyModel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PointBodyModel.hpp; sourceTree = "<group>"; };
-		AD0F9FB01D505A0A0034D27C /* NonlinearModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonlinearModel.cpp; sourceTree = "<group>"; };
-		AD0F9FB11D505A0A0034D27C /* NonlinearModel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NonlinearModel.hpp; sourceTree = "<group>"; };
-		AD0F9FB21D505A0A0034D27C /* NonlinearSim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonlinearSim.h; sourceTree = "<group>"; };
 		AD0F9FB41D505A0A0034D27C /* Pendulum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pendulum.cpp; sourceTree = "<group>"; };
 		AD0F9FB51D505A0A0034D27C /* Pendulum.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pendulum.hpp; sourceTree = "<group>"; };
 		AD0F9FB61D505A0A0034D27C /* PendulumSim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PendulumSim.cpp; sourceTree = "<group>"; };
@@ -141,8 +133,6 @@
 		AD0F9FD01D505C4F0034D27C /* Heap_Impl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Heap_Impl.hpp; sourceTree = "<group>"; };
 		AD0F9FD11D505C600034D27C /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Parser.cpp; path = ../../../../dependencies/ConfigReader/Parser.cpp; sourceTree = "<group>"; };
 		AD0F9FD21D505C600034D27C /* Parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Parser.hpp; path = ../../../../dependencies/ConfigReader/Parser.hpp; sourceTree = "<group>"; };
-		AD0F9FDC1D505D460034D27C /* vec3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vec3.cpp; path = ../../../../dependencies/Geom3/vec3.cpp; sourceTree = "<group>"; };
-		AD0F9FDD1D505D460034D27C /* vec3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = vec3.hpp; path = ../../../../dependencies/Geom3/vec3.hpp; sourceTree = "<group>"; };
 		AD0F9FE11D505D810034D27C /* AllMatExprs.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AllMatExprs.hpp; sourceTree = "<group>"; };
 		AD0F9FE21D505D810034D27C /* MatMinusExpr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatMinusExpr.hpp; sourceTree = "<group>"; };
 		AD0F9FE31D505D810034D27C /* MatMultExpr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatMultExpr.hpp; sourceTree = "<group>"; };
@@ -205,6 +195,9 @@
 		ADBAF9361DDC15D600634FF1 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		ADBAF9371DDC15D600634FF1 /* Timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		ADBAF9391DDC2DD500634FF1 /* sim_base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = sim_base.hpp; path = sim/sim_base.hpp; sourceTree = "<group>"; };
+		ADBAF96D1DDD638F00634FF1 /* sim_scheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sim_scheduler.cpp; path = sim/sim_scheduler.cpp; sourceTree = "<group>"; };
+		ADBAF96E1DDD638F00634FF1 /* sim_scheduler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sim_scheduler.hpp; path = sim/sim_scheduler.hpp; sourceTree = "<group>"; };
+		ADBAF9701DDD721C00634FF1 /* sim_base_details.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = sim_base_details.hpp; path = sim/sim_base_details.hpp; sourceTree = "<group>"; };
 		ADFC468F1D8FB24600A99CCE /* BogackiShampine23.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BogackiShampine23.cpp; sourceTree = "<group>"; };
 		ADFC46901D8FB24600A99CCE /* BogackiShampine23.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BogackiShampine23.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -478,9 +471,6 @@
 			children = (
 				AD0F9FDF1D505D5B0034D27C /* MetaLA */,
 				AD0F9FDB1D505D000034D27C /* vec3 */,
-				AD0F9FAC1D505A0A0034D27C /* NBodySim.hpp */,
-				AD0F9FAD1D505A0A0034D27C /* PointBodyModel.cpp */,
-				AD0F9FAE1D505A0A0034D27C /* PointBodyModel.hpp */,
 			);
 			name = NBodyProblem;
 			path = ../../../../src/Examples/NBodyProblem;
@@ -489,9 +479,6 @@
 		AD0F9FAF1D505A0A0034D27C /* NonlinearTest */ = {
 			isa = PBXGroup;
 			children = (
-				AD0F9FB01D505A0A0034D27C /* NonlinearModel.cpp */,
-				AD0F9FB11D505A0A0034D27C /* NonlinearModel.hpp */,
-				AD0F9FB21D505A0A0034D27C /* NonlinearSim.h */,
 			);
 			name = NonlinearTest;
 			path = ../../../../src/Examples/NonlinearTest;
@@ -587,8 +574,6 @@
 		AD0F9FDB1D505D000034D27C /* vec3 */ = {
 			isa = PBXGroup;
 			children = (
-				AD0F9FDC1D505D460034D27C /* vec3.cpp */,
-				AD0F9FDD1D505D460034D27C /* vec3.hpp */,
 			);
 			name = vec3;
 			path = ../../../build/xcode/KrystalBall/KrystalBall;
@@ -800,6 +785,7 @@
 		ADBAF9221DD9672000634FF1 /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
+				ADBAF96C1DDD636500634FF1 /* scheduler */,
 				ADBAF92C1DD97ACC00634FF1 /* implementation */,
 				ADBAF9271DD9697900634FF1 /* integration */,
 				ADBAF9231DD9672C00634FF1 /* state */,
@@ -836,8 +822,18 @@
 			isa = PBXGroup;
 			children = (
 				ADBAF9391DDC2DD500634FF1 /* sim_base.hpp */,
+				ADBAF9701DDD721C00634FF1 /* sim_base_details.hpp */,
 			);
 			name = implementation;
+			sourceTree = "<group>";
+		};
+		ADBAF96C1DDD636500634FF1 /* scheduler */ = {
+			isa = PBXGroup;
+			children = (
+				ADBAF96D1DDD638F00634FF1 /* sim_scheduler.cpp */,
+				ADBAF96E1DDD638F00634FF1 /* sim_scheduler.hpp */,
+			);
+			name = scheduler;
 			sourceTree = "<group>";
 		};
 		ADFC46881D8FB1C700A99CCE /* ButcherIntegratorBase */ = {
@@ -984,6 +980,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD0F9FC01D505A0A0034D27C /* Pendulum.cpp in Sources */,
+				ADBAF96F1DDD638F00634FF1 /* sim_scheduler.cpp in Sources */,
 				AD0F9FBD1D505A0A0034D27C /* NeuronSim.cpp in Sources */,
 				AD0F9F851D5059790034D27C /* DynamicModel.cpp in Sources */,
 				AD0F9FCA1D505B7F0034D27C /* RandomNumberGenerator.cpp in Sources */,
@@ -992,9 +989,7 @@
 				AD0F9F8B1D5059790034D27C /* RKCashKarp.cpp in Sources */,
 				AD0F9FBC1D505A0A0034D27C /* HodgkinHuxleyNeuronModel.cpp in Sources */,
 				ADBAF92F1DD989E200634FF1 /* history_printer.cpp in Sources */,
-				AD0F9FBE1D505A0A0034D27C /* PointBodyModel.cpp in Sources */,
 				AD0F9F881D5059790034D27C /* ButcherIntegrator.cpp in Sources */,
-				AD0F9FDE1D505D460034D27C /* vec3.cpp in Sources */,
 				AD0F9FB91D505A0A0034D27C /* AdvectionEqnSim.cpp in Sources */,
 				AD0F9FBB1D505A0A0034D27C /* HeatEquationSim.cpp in Sources */,
 				AD0F9FB81D505A0A0034D27C /* AdvectionEqn.cpp in Sources */,
@@ -1013,7 +1008,6 @@
 				AD0F9F8A1D5059790034D27C /* ExplicitTrapezoidal.cpp in Sources */,
 				AD0F9F8E1D5059790034D27C /* SimState.cpp in Sources */,
 				AD0F9F871D5059790034D27C /* ModelState.cpp in Sources */,
-				AD0F9FBF1D505A0A0034D27C /* NonlinearModel.cpp in Sources */,
 				AD0F9FC61D505B660034D27C /* Fraction.cpp in Sources */,
 				AD0F9F821D5059790034D27C /* Constants.cpp in Sources */,
 				AD0F9F841D5059790034D27C /* DiscreteModel.cpp in Sources */,

@@ -198,6 +198,8 @@
 		ADBAF96D1DDD638F00634FF1 /* sim_scheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sim_scheduler.cpp; path = sim/sim_scheduler.cpp; sourceTree = "<group>"; };
 		ADBAF96E1DDD638F00634FF1 /* sim_scheduler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sim_scheduler.hpp; path = sim/sim_scheduler.hpp; sourceTree = "<group>"; };
 		ADBAF9701DDD721C00634FF1 /* sim_base_details.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = sim_base_details.hpp; path = sim/sim_base_details.hpp; sourceTree = "<group>"; };
+		ADBAF9741DDED2E100634FF1 /* uniform_sim_details.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = uniform_sim_details.hpp; path = sim/uniform_sim_details.hpp; sourceTree = "<group>"; };
+		ADBAF9751DDED43A00634FF1 /* uniform_sim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = uniform_sim.hpp; path = sim/uniform_sim.hpp; sourceTree = "<group>"; };
 		ADFC468F1D8FB24600A99CCE /* BogackiShampine23.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BogackiShampine23.cpp; sourceTree = "<group>"; };
 		ADFC46901D8FB24600A99CCE /* BogackiShampine23.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BogackiShampine23.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -821,6 +823,8 @@
 		ADBAF92C1DD97ACC00634FF1 /* implementation */ = {
 			isa = PBXGroup;
 			children = (
+				ADBAF9761DDED4C400634FF1 /* block_sim */,
+				ADBAF9721DDED0D600634FF1 /* uniform_sim */,
 				ADBAF9391DDC2DD500634FF1 /* sim_base.hpp */,
 				ADBAF9701DDD721C00634FF1 /* sim_base_details.hpp */,
 			);
@@ -834,6 +838,22 @@
 				ADBAF96E1DDD638F00634FF1 /* sim_scheduler.hpp */,
 			);
 			name = scheduler;
+			sourceTree = "<group>";
+		};
+		ADBAF9721DDED0D600634FF1 /* uniform_sim */ = {
+			isa = PBXGroup;
+			children = (
+				ADBAF9751DDED43A00634FF1 /* uniform_sim.hpp */,
+				ADBAF9741DDED2E100634FF1 /* uniform_sim_details.hpp */,
+			);
+			name = uniform_sim;
+			sourceTree = "<group>";
+		};
+		ADBAF9761DDED4C400634FF1 /* block_sim */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = block_sim;
 			sourceTree = "<group>";
 		};
 		ADFC46881D8FB1C700A99CCE /* ButcherIntegratorBase */ = {

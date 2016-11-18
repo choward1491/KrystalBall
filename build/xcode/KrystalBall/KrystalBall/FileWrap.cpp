@@ -33,6 +33,9 @@ namespace wrap {
     bool file::isOpen() const{
         return (fp != 0);
     }
+    
+    void file::close() { clear(); }
+    
     void file::openFile( const char* filename, AccessMode mode ){
         clear();
         

@@ -1,12 +1,11 @@
 //
-//  FileWrap.hpp
-//  TechInterviewPractice
+//  uniform_sim_details.hpp
+//  KrystalBall
 //
-//  Created by Christian J Howard on 12/12/15.
-//  Copyright © 2015 Christian Howard. All rights reserved.
+//  Created by Christian J Howard on 11/17/16.
 //
 //  The MIT License (MIT)
-//  Copyright © 2016 Christian Howard. All rights reserved.
+//    Copyright © 2016 Christian Howard. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -28,39 +27,24 @@
 //
 //
 
-#ifndef FileWrap_hpp
-#define FileWrap_hpp
+#ifndef uniform_sim_details_h
+#define uniform_sim_details_h
 
-#include <stdio.h>
-#include <string>
+#include "uniform_sim_details.hpp"
 
-namespace wrap {
+namespace sim {
+    
+    template<typename Sim, typename T, template<typename> class Integrator>
+    void uniform<Sim,T,Integrator>::setupTimeIntegration() {
+        integ.setNumDimensions(this->getState().size());
+    }
 
-class file {
-public:
+    template<typename Sim, typename T, template<typename> class Integrator>
+    Integrator<T> & uniform<Sim,T,Integrator>::getIntegrator() {
+        return integ;
+    }
     
-    enum AccessMode { Read=0, Write, Append, ReadUpdate, WriteUpdate, AppendUpdate };
-    
-    file();
-    file( const char* filename , AccessMode mode );
-    file( const std::string & filename, AccessMode mode );
-    ~file();
-    
-    bool isOpen() const;
-    void close();
-    void openFile( const char* filename, AccessMode mode );
-    void openFile( const std::string & filename, AccessMode mode );
-    void resetFile();
-    
-    operator FILE* () const;
-    FILE* ref() const;
-    
-private:
-    void clear();
-    FILE* fp;
-    
-};
-
 }
 
-#endif /* FileObject_hpp */
+
+#endif /* uniform_sim_details_h */

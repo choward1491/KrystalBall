@@ -51,8 +51,11 @@ namespace sim {
         ~state();
         void allocate(int num_state);
         void setStateRef( num_type* ref );
+        
         num_type** getStateRef();
         num_type getCurrentTime() const;
+        int size() const;
+        
         void setCurrentTime( const num_type & t );
         scheduler<T> & getScheduler();
         const scheduler<T> & getScheduler() const;
@@ -60,11 +63,12 @@ namespace sim {
         const print::history<T> & getPrinter() const;
         
         void willWriteHistory( bool trueOrFalse );
+        bool isWritingHistory() const;
         void writeHistoryAtRate( num_type rateHz );
         void setSimHistoryFile( const std::string & filename );
         void addHistoryWriterToScheduler();
         void addDiscreteModelToScheduler( num_type rateHz, discrete::model<T> & model);
-        void setRNGSeed( int seed );
+        void setRNGSeed( int seed = 17 );
         double rand();
         uint64_t randInt();
         double gaussRand( double mean = 0.0, double sig = 1.0 );

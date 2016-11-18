@@ -37,6 +37,7 @@
 
 namespace sim {
     
+    
     template<typename Sim, typename T = double >
     class base {
     public:
@@ -58,7 +59,14 @@ namespace sim {
         
     protected:
         
+        state<T> & getState();
+        models::list<T> & getModelList();
+        const state<T> & getState() const;
+        const models::list<T> & getModelList() const;
+        int getNumCompleteMonteCarlo() const;
+        
     private:
+        
         state<T> state;
         models::list<T> model_list;
         int numCompleteMC;
@@ -69,16 +77,18 @@ namespace sim {
         void setupSimHistory();         // method to setup sim history
         void MonteCarloSetup( int monteCarloCount ); // method to setup ith monte carlo draws
         void runIndividualSim();        // method to run an individual simulation
+        void runTimeStep();
         void runMonteCarloSim();        // method to run a whole Monte Carlo sim (calls runIndividualSim)
         
         // CRTP methods to be implemented
-        //bool MonteCarloNotDone();
+        //bool isMonteCarloDone();
         //void linkModelsToSim();         // method to link models to sim
         //void connectModelsTogether();   // method to connect models together, if necessary
         //bool finishedSimulation();      // method to return whether the sim has finished
         //void finalizeMonteCarloRun();   // method to finalize a monte carlo run
         //void finalize();                // method to finalize the whole completed simulation
         //void buildTotalDynamicState();  // method to construct the total data associated with dynamic models
+        //void setupTimeIntegration();    // method to setup any time integration stuff
         
     };
     

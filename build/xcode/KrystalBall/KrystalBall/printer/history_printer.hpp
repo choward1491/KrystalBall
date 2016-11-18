@@ -43,6 +43,8 @@ namespace print {
         virtual std::string name() const;
         virtual void init();
         virtual void update();
+        void reset();
+        void addEmptyLine();
         void setFileToWriteTo( const std::string & file );
         
         template<typename U>

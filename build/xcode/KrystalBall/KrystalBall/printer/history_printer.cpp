@@ -48,10 +48,16 @@ namespace print {
     HEADER
     void HISTORY::init() {
         if( !data->file.isOpen() ){
+            data->file.close();
             data->file.openFile(data->outFile,wrap::file::Write);
         }else{
             fprintf(data->file, "\n");
         }
+    }
+    
+    HEADER
+    void HISTORY::addEmptyLine() {
+        if( data->file.isOpen() ){ fprintf(data->file, "\n"); }
     }
     
     HEADER
@@ -69,6 +75,11 @@ namespace print {
                 writeDataToFile( data->file );
             }
         }
+    }
+    
+    HEADER
+    void HISTORY::reset() {
+        data->hasHeader = false;
     }
     
     HEADER

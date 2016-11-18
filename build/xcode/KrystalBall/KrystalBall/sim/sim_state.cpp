@@ -20,17 +20,20 @@ namespace sim {
     
 #define HEADER template<typename T>
 #define STATE state<T>
+#define ITEM(func,out_type) HEADER\
+            out_type STATE::func
     
     HEADER
     struct STATE::Data {
         Data():safety_ref(nullptr),dyn_state(nullptr){}
         num_type* safety_ref;
         num_type* dyn_state;
+        int num_state = 0;
         Time time = 0.0;
         scheduler<T> scheduler;
         print::history<T> data_writer;
         bool doWriteData = false;
-        num_type writeRate;
+        num_type writeRate = 1;
         Parser parser;
         RNG rng;
     };
@@ -64,6 +67,10 @@ namespace sim {
     HEADER
     void STATE::willWriteHistory( bool trueOrFalse ){
         data->doWriteData = trueOrFalse;
+    }
+    
+    ITEM(isWritingHistory() const, bool){
+        return data->doWriteData;
     }
     
     HEADER
@@ -109,9 +116,15 @@ namespace sim {
     }
     
     HEADER
-    void STATE::allocate(int num_state) {
+    int STATE::size() const {
+        return data->num_state;
+    }
+    
+    HEADER
+    void STATE::allocate(int num_state_) {
+        data->num_state = num_state_;
         if( data->safety_ref ){ delete [] data->safety_ref; data->safety_ref = data->dyn_state = nullptr; }
-        data->safety_ref = new num_type[num_state];
+        data->safety_ref = new num_type[data->num_state];
         data->dyn_state = data->safety_ref;
     }
     

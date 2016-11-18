@@ -36,7 +36,8 @@ namespace sim {
     
 #define HEADER template<typename Sim, typename T>
 #define BASE base<Sim,T>
-#define CRTP(func) static_cast<Sim*>(this)->func
+#define CRTP(func) static_cast<typename Sim::type*>(this)->func
+#define CRTP_Time(func) static_cast<Sim*>(this)->func
     
     HEADER
     BASE::base():numCompleteMC(0),didSetup(false) {
@@ -46,6 +47,31 @@ namespace sim {
     HEADER
     BASE::~base() {
         
+    }
+    
+    HEADER
+    state<T> & BASE::getState(){
+        return state;
+    }
+    
+    HEADER
+    models::list<T> & BASE::getModelList() {
+        return model_list;
+    }
+    
+    HEADER
+    const state<T> & BASE::getState() const {
+        return state;
+    }
+    
+    HEADER
+    const models::list<T> & BASE::getModelList() const {
+        return model_list;
+    }
+    
+    HEADER
+    int BASE::getNumCompleteMonteCarlo() const {
+        return numCompleteMC;
     }
     
     HEADER
@@ -62,15 +88,16 @@ namespace sim {
             state.addHistoryWriterToScheduler();
             CRTP(linkModelsToSim());          // add other models to sim
             CRTP(buildTotalDynamicState());   // build dynamic state array
-            //integrator.setNumDimensions(state.size()); // initialize integrator
-            // ^ TODO: Add some method to initialize integrator, whether it's a CRTP method or something else
+            CRTP_Time(setupTimeIntegration());     // initialize integration
             model_list.setCentralSimState(state);
-            setupSimHistory();          // add variables that will be printed
+            setupSimHistory();                // add variables that will be printed
             CRTP(connectModelsTogether());    // connect models together if needed
             didSetup = true;
         }
         
     }
+    
+    
     
     HEADER
     void BASE::initializeModels() {
@@ -90,18 +117,52 @@ namespace sim {
         for(int i = 0; i < disc_list.size(); ++i ){
             disc_list[i]->setupPrintData( printer );
         }
-        
     }
     
     
     HEADER
     void BASE::runMonteCarloSim() {
-        completedMC = 1;
-        while( CRTP(MonteCarloNotDone()) ) { // loop through all monte carlo draws
-            MonteCarloSetup(iMC);               // setup iMCth monte carlo sim
+        numCompleteMC = 0;
+        while( !CRTP(isMonteCarloDone()) ) {    // loop through all monte carlo draws
+            MonteCarloSetup(numCompleteMC);     // setup iMCth monte carlo sim
             runIndividualSim();                 // run an individual sim
-            CRTP(finalizeMonteCarloRun());            // finalize latest individual sim
+            CRTP(finalizeMonteCarloRun());      // finalize latest individual sim
+            ++numCompleteMC;
         }
+    }
+    
+    HEADER
+    void BASE::MonteCarloSetup(int monteCarloCount ) {
+        initializeModels();     // Initialize models for ith MC run
+        
+        if( monteCarloCount >= 0 ){     // If new monte carlo run, reset everything
+            state.getScheduler().reset();
+            state.setCurrentTime( num_type(0.0) );
+            
+            if( state.isWritingHistory() ){
+                if( monteCarloCount != 0 ){
+                    state.getPrinter().addEmptyLine();
+                }else{
+                    state.getPrinter().reset();
+                }
+            }
+        }
+        
+        if( state.isWritingHistory() ){       // if writing a sim history,
+            state.getPrinter().update();    // update output sim history
+        }                                   // file with initial condition
+    }
+    
+    HEADER
+    void BASE::runIndividualSim() {
+        while( !CRTP(finishedSimulation()) ){
+            runTimeStep();
+        }
+    }
+    
+    HEADER
+    void BASE::runTimeStep() {
+        printf("hi there\n");
     }
     
     

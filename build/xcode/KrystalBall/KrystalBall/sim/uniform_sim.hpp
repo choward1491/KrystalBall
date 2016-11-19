@@ -34,31 +34,15 @@
 
 namespace sim {
     
-    
-    
-    template<class Sim,typename T, template<typename> class Integrator>
-    class uniform : public base<uniform<Sim, T, Integrator>,T> {
+    template<typename T, template<typename> class Integrator>
+    class uniform : public base<T> {
     public:
-        typedef Sim type;
-        typedef base<uniform<Sim, T, Integrator>,T> base;
         uniform() = default;
         Integrator<T> & getIntegrator();
         
     private:
-        friend base;
         Integrator<T> integ;
-        void setupTimeIntegration();    // method to setup any time integration stuff
-        
-        // CRTP functions to implement
-        /*
-        bool isMonteCarloDone();
-        void linkModelsToSim();         // method to link models to sim
-        void connectModelsTogether();   // method to connect models together, if necessary
-        bool finishedSimulation();      // method to return whether the sim has finished
-        void finalizeMonteCarloRun();   // method to finalize a monte carlo run
-        void finalize();                // method to finalize the whole completed simulation
-        void buildTotalDynamicState();  // method to construct the total data associated with dynamic models
-         */
+        void setupTimeIntegration() final;    // method to setup any time integration stuff
     };
     
 }

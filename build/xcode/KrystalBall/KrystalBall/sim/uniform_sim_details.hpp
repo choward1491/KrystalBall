@@ -34,13 +34,13 @@
 
 namespace sim {
     
-    template<typename Sim, typename T, template<typename> class Integrator>
-    void uniform<Sim,T,Integrator>::setupTimeIntegration() {
+    template<typename T, template<typename> class Integrator>
+    void uniform<T,Integrator>::setupTimeIntegration() {
         integ.setNumDimensions(this->getState().size());
     }
 
-    template<typename Sim, typename T, template<typename> class Integrator>
-    Integrator<T> & uniform<Sim,T,Integrator>::getIntegrator() {
+    template<typename T, template<typename> class Integrator>
+    Integrator<T> & uniform<T,Integrator>::getIntegrator() {
         return integ;
     }
     

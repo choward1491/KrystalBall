@@ -1,5 +1,5 @@
 //
-//  sim_base_details.hpp
+//  sim_base_details.cpp
 //  KrystalBall
 //
 //  Created by Christian J Howard on 11/16/16.
@@ -27,25 +27,16 @@
 //
 //
 
-#ifndef sim_base_details_h
-#define sim_base_details_h
-
 #include "sim_base.hpp"
+#include "history_printer.hpp"
 
 namespace sim {
     
-#define HEADER template<typename Sim, typename T>
-#define BASE base<Sim,T>
-#define CRTP(func) static_cast<typename Sim::type*>(this)->func
-#define CRTP_Time(func) static_cast<Sim*>(this)->func
+#define HEADER template<typename T>
+#define BASE base<T>
     
     HEADER
     BASE::base():numCompleteMC(0),didSetup(false) {
-        
-    }
-    
-    HEADER
-    BASE::~base() {
         
     }
     
@@ -78,7 +69,7 @@ namespace sim {
     void BASE::run() {
         initialize();
         runMonteCarloSim();
-        CRTP(finalize());
+        finalize();
     }
     
     HEADER
@@ -86,12 +77,12 @@ namespace sim {
         
         if( !didSetup ){
             state.addHistoryWriterToScheduler();
-            CRTP(linkModelsToSim());          // add other models to sim
-            CRTP(buildTotalDynamicState());   // build dynamic state array
-            CRTP_Time(setupTimeIntegration());     // initialize integration
+            linkModelsToSim();          // add other models to sim
+            buildTotalDynamicState();   // build dynamic state array
+            setupTimeIntegration();     // initialize integration
             model_list.setCentralSimState(state);
             setupSimHistory();                // add variables that will be printed
-            CRTP(connectModelsTogether());    // connect models together if needed
+            connectModelsTogether();    // connect models together if needed
             didSetup = true;
         }
         
@@ -123,10 +114,10 @@ namespace sim {
     HEADER
     void BASE::runMonteCarloSim() {
         numCompleteMC = 0;
-        while( !CRTP(isMonteCarloDone()) ) {    // loop through all monte carlo draws
+        while( !isMonteCarloDone() ) {    // loop through all monte carlo draws
             MonteCarloSetup(numCompleteMC);     // setup iMCth monte carlo sim
             runIndividualSim();                 // run an individual sim
-            CRTP(finalizeMonteCarloRun());      // finalize latest individual sim
+            finalizeMonteCarloRun();      // finalize latest individual sim
             ++numCompleteMC;
         }
     }
@@ -155,7 +146,7 @@ namespace sim {
     
     HEADER
     void BASE::runIndividualSim() {
-        while( !CRTP(finishedSimulation()) ){
+        while( !finishedSimulation() ){
             runTimeStep();
         }
     }
@@ -207,13 +198,36 @@ namespace sim {
         state.willWriteHistory( trueOrFalse );
     }
     
-    /*
-        state<T> state;
-        models::list<T> model_list;
-     */
+    
+    HEADER
+    bool BASE::isMonteCarloDone() { return true; }
+    
+    HEADER
+    void BASE::linkModelsToSim() {}
+    
+    HEADER
+    void BASE::connectModelsTogether() {}
+    
+    HEADER
+    bool BASE::finishedSimulation() { return true; }
+    
+    HEADER
+    void BASE::finalizeMonteCarloRun() {}
+    
+    HEADER
+    void BASE::finalize() {}
+    
+    HEADER
+    void BASE::buildTotalDynamicState(){}
+    
+    HEADER
+    void BASE::setupTimeIntegration() {}
+    
+    
 #undef HEADER
 #undef BASE
     
 }
 
-#endif /* sim_base_details_h */
+template class sim::base<float>;
+template class sim::base<double>;

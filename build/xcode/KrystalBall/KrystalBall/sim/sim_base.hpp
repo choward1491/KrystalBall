@@ -38,12 +38,12 @@
 namespace sim {
     
     
-    template<typename Sim, typename T = double >
+    template<typename T = double >
     class base {
     public:
         typedef T num_type;
         base();
-        ~base();
+        virtual ~base() = default;
         void run();
         void addConfigFile( const char * filename );
         void addConfigFile( const std::string & filename );
@@ -80,23 +80,21 @@ namespace sim {
         void runTimeStep();
         void runMonteCarloSim();        // method to run a whole Monte Carlo sim (calls runIndividualSim)
         
-        // CRTP methods to be implemented
-        //bool isMonteCarloDone();
-        //void linkModelsToSim();         // method to link models to sim
-        //void connectModelsTogether();   // method to connect models together, if necessary
-        //bool finishedSimulation();      // method to return whether the sim has finished
-        //void finalizeMonteCarloRun();   // method to finalize a monte carlo run
-        //void finalize();                // method to finalize the whole completed simulation
-        //void buildTotalDynamicState();  // method to construct the total data associated with dynamic models
-        //void setupTimeIntegration();    // method to setup any time integration stuff
+        // polymorphic functions to be defined in subclassed simulations
+        virtual bool isMonteCarloDone();
+        virtual void linkModelsToSim();         // method to link models to sim
+        virtual void connectModelsTogether();   // method to connect models together, if necessary
+        virtual bool finishedSimulation();      // method to return whether the sim has finished
+        virtual void finalizeMonteCarloRun();   // method to finalize a monte carlo run
+        virtual void finalize();                // method to finalize the whole completed simulation
+        virtual void buildTotalDynamicState();  // method to construct the total data associated with dynamic models
+        virtual void setupTimeIntegration();    // method to setup any time integration stuff
         
     };
     
     
 }
 
-
-#include "sim_base_details.hpp"
 
 
 #endif /* sim_base_h */

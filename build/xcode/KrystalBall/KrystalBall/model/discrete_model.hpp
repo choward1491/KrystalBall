@@ -56,7 +56,7 @@ namespace discrete {
         void setUpdateRate( num_type rateHz );
         Time getUpdateRate() const;
         Time getDt() const;
-        virtual num_type getNextUpdateTime( num_type currentTime );
+        virtual Time getNextUpdateTime( Time currentTime );
         
     protected:
         sim::state<T> & getCentralSimState();

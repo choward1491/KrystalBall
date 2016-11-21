@@ -36,6 +36,9 @@
 #include <string>
 #include <stdint.h>
 
+class Fraction;
+typedef Fraction Time;
+
 namespace print {
     template<typename T> class history;
 }
@@ -49,25 +52,31 @@ namespace sim {
         
         state();
         ~state();
+        
         void allocate(int num_state);
         void setStateRef( num_type* ref );
-        
         num_type** getStateRef();
         num_type getCurrentTime() const;
         int size() const;
         
         void setCurrentTime( const num_type & t );
+        void setCurrentTime( const Time & t);
+        Time & getTime();
+        const Time & getTime() const;
+        
         scheduler<T> & getScheduler();
         const scheduler<T> & getScheduler() const;
+        
         print::history<T> & getPrinter();
         const print::history<T> & getPrinter() const;
-        
         void willWriteHistory( bool trueOrFalse );
         bool isWritingHistory() const;
-        void writeHistoryAtRate( num_type rateHz );
+        void writeHistoryAtRate( double rateHz );
         void setSimHistoryFile( const std::string & filename );
         void addHistoryWriterToScheduler();
+        
         void addDiscreteModelToScheduler( num_type rateHz, discrete::model<T> & model);
+        
         void setRNGSeed( int seed = 17 );
         double rand();
         uint64_t randInt();

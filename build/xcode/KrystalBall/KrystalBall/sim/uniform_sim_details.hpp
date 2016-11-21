@@ -44,6 +44,11 @@ namespace sim {
         return integ;
     }
     
+    template<typename T, template<typename> class Integrator>
+    void uniform<T,Integrator>::simulateTimeStep() {
+        // TODO: implement integration of dynamic models
+    }
+    
 }
 
 

@@ -43,6 +43,7 @@ namespace sim {
     private:
         Integrator<T> integ;
         void setupTimeIntegration() final;    // method to setup any time integration stuff
+        void simulateTimeStep() final;
     };
     
 }

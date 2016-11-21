@@ -29,14 +29,42 @@
 
 #include "sim_base.hpp"
 #include "history_printer.hpp"
+#include "PreciseTime.h"
+#include <math.h>
 
 namespace sim {
     
 #define HEADER template<typename T>
 #define BASE base<T>
+#define MQ BASE::ModelQueue
     
     HEADER
-    BASE::base():numCompleteMC(0),didSetup(false) {
+    MQ::ModelQueue():d_queue(20,nullptr),num_used(0) {
+        
+    }
+    
+    HEADER
+    void MQ::addModel( d_model* model ) {
+        if( num_used == d_queue.size() ){ d_queue.resize(num_used*2); }
+        d_queue[num_used] = model; ++num_used;
+    }
+    
+    HEADER
+    typename MQ::d_model* MQ::popModel() {
+        num_used = std::max(num_used-1,0);
+        d_model* m = d_queue[num_used];
+        d_queue[num_used] = nullptr;
+        return m;
+    }
+    
+    HEADER
+    int MQ::numModels() const {
+        return num_used;
+    }
+    
+    
+    HEADER
+    BASE::base():numCompleteMC(0),didSetup(false),m_queue() {
         
     }
     
@@ -81,7 +109,7 @@ namespace sim {
             buildTotalDynamicState();   // build dynamic state array
             setupTimeIntegration();     // initialize integration
             model_list.setCentralSimState(state);
-            setupSimHistory();                // add variables that will be printed
+            setupSimHistory();          // add variables that will be printed
             connectModelsTogether();    // connect models together if needed
             didSetup = true;
         }
@@ -93,6 +121,7 @@ namespace sim {
     HEADER
     void BASE::initializeModels() {
         model_list.init();
+        model_list.updateDynamicModels();
     }
     
     HEADER
@@ -139,7 +168,7 @@ namespace sim {
             }
         }
         
-        if( state.isWritingHistory() ){       // if writing a sim history,
+        if( state.isWritingHistory() ){     // if writing a sim history,
             state.getPrinter().update();    // update output sim history
         }                                   // file with initial condition
     }
@@ -153,7 +182,28 @@ namespace sim {
     
     HEADER
     void BASE::runTimeStep() {
-        printf("hi there\n");
+        discrete::model<num_type> * d_ptr = nullptr;
+        sim::scheduler<num_type> & s = state.getScheduler();
+        Time & currentTime = state.getTime();
+        Time nextTime = s.getNextTime();
+        
+        
+        // 1) get all discrete models that happen at time t_{i+1}
+        while( s.size() > 0 && nextTime == s.getRootKey() ){
+            m_queue.addModel(s.pop());
+        }
+        
+        // 2) simulate up to time t_{i+1} and update auxilary vars
+        simulateTimeStep();
+        model_list.updateDynamicModels();
+        
+        // 3) execute models in queue that must run at time t_{i+1}
+        // 4) add models to scheduler based on their next runtime
+        while( m_queue.numModels() != 0 ) {
+            d_ptr = m_queue.popModel();
+            d_ptr->update();
+            s.addNewModel( d_ptr->getNextUpdateTime(currentTime), d_ptr);
+        }
     }
     
     
@@ -168,8 +218,8 @@ namespace sim {
     }
     
     HEADER
-    typename BASE::num_type BASE::getTime() const {
-        return state.getCurrentTime();
+    Time BASE::getTime() const {
+        return state.getTime();
     }
     
     HEADER
@@ -198,6 +248,10 @@ namespace sim {
         state.willWriteHistory( trueOrFalse );
     }
     
+    HEADER
+    void BASE::setSimHistoryRate( double printRateHz ) {
+        state.writeHistoryAtRate(printRateHz);
+    }
     
     HEADER
     bool BASE::isMonteCarloDone() { return true; }
@@ -222,6 +276,9 @@ namespace sim {
     
     HEADER
     void BASE::setupTimeIntegration() {}
+    
+    HEADER
+    void BASE::simulateTimeStep() {}
     
     
 #undef HEADER

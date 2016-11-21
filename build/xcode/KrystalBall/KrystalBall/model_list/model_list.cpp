@@ -36,11 +36,14 @@ namespace models {
     
     HEADER
     void LIST::init(){
-        for(int i = 0; i < data->dynamic_m.size(); ++i ){
-            data->dynamic_m[i]->init();
+        DynamicList & d_list = data->dynamic_m;
+        DiscreteList& di_list= data->discrete_m;
+        
+        for(int i = 0; i < d_list.size(); ++i ){
+            d_list[i]->init();
         }
-        for(int i = 0; i < data->dynamic_m.size(); ++i ){
-            data->discrete_m[i]->init();
+        for(int i = 0; i < di_list.size(); ++i ){
+            di_list[i]->init();
         }
     }
     
@@ -76,6 +79,14 @@ namespace models {
     HEADER
     const typename LIST::DiscreteList& LIST::getDiscreteList() const {
         return data->discrete_m;
+    }
+    
+    HEADER
+    void LIST::updateDynamicModels() {
+        DynamicList & d_list = data->dynamic_m;
+        for(int i = 0; i < d_list.size(); ++i ){
+            d_list[i]->update();
+        }
     }
     
     

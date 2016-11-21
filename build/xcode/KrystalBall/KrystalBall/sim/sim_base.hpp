@@ -35,6 +35,9 @@
 #include "discrete_model.hpp"
 #include "dynamic_model.hpp"
 
+class Fraction;
+typedef Fraction Time;
+
 namespace sim {
     
     
@@ -47,12 +50,13 @@ namespace sim {
         void run();
         void addConfigFile( const char * filename );
         void addConfigFile( const std::string & filename );
-        num_type getTime() const;
+        Time getTime() const;
         int getCompletedMC() const;
-        void setSimHistoryPath( const std::string & filepath );
         void addDynamics( dynamic::model<T> & model );
         void addDiscrete( discrete::model<T> & model , num_type computationFrequency );
+        void setSimHistoryPath( const std::string & filepath );
         void willWriteSimHistory( bool trueOrFalse );
+        void setSimHistoryRate( double printRateHz );
         
         template<typename U>
         U get(const std::string & param) { return state.get(param); }
@@ -67,8 +71,22 @@ namespace sim {
         
     private:
         
+        struct ModelQueue {
+            typedef discrete::model<num_type> d_model;
+            ModelQueue();
+            void addModel( d_model* model );
+            d_model* popModel();
+            int numModels() const;
+            
+        private:
+            std::vector< d_model* > d_queue;
+            int num_used;
+        };
+        
+        
         state<T> state;
         models::list<T> model_list;
+        ModelQueue m_queue;
         int numCompleteMC;
         bool didSetup;
         
@@ -89,6 +107,7 @@ namespace sim {
         virtual void finalize();                // method to finalize the whole completed simulation
         virtual void buildTotalDynamicState();  // method to construct the total data associated with dynamic models
         virtual void setupTimeIntegration();    // method to setup any time integration stuff
+        virtual void simulateTimeStep();        // method to do single simulation integration step for all dynamic models
         
     };
     

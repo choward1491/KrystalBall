@@ -97,5 +97,69 @@
             endingLineNumber = "38">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KrystalBall/main.cpp"
+            timestampString = "501398998.211238"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "main(int argc, const char * argv[])"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KrystalBall/sim/sim_base_details.cpp"
+            timestampString = "501399616.086989"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "BASE::runTimeStep()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sim::base&lt;float&gt;::runTimeStep()"
+                  moduleName = "KrystalBall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/christianjhoward/Documents/ProgrammingProjects/CPlusPlus_Projects/KrystalBall/build/xcode/KrystalBall/KrystalBall/sim/sim_base_details.cpp"
+                  timestampString = "501399355.496052"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sim::base&lt;double&gt;::runTimeStep()"
+                  moduleName = "KrystalBall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/christianjhoward/Documents/ProgrammingProjects/CPlusPlus_Projects/KrystalBall/build/xcode/KrystalBall/KrystalBall/sim/sim_base_details.cpp"
+                  timestampString = "501399355.49954"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

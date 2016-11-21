@@ -79,8 +79,8 @@ namespace discrete {
     }
     
     HEADER
-    typename MODEL::num_type MODEL::getNextUpdateTime( num_type currentTime ) {
-        return currentTime + static_cast<num_type>(data->dt);
+    Time MODEL::getNextUpdateTime( Time currentTime ) {
+        return currentTime + data->dt;
     }
     
     HEADER

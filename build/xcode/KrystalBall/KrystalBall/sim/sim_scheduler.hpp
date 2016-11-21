@@ -43,7 +43,7 @@ namespace sim {
     public:
         typedef MinHeap<Time, discrete::model<T>* > parent;
         Time getNextTime();
-        void addNewModel( Time firstTime, discrete::model<T>* model );
+        void addNewModel( Time time_to_run, discrete::model<T>* model );
         void reset();
     };
 

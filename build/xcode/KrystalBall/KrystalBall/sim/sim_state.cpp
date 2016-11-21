@@ -74,7 +74,7 @@ namespace sim {
     }
     
     HEADER
-    void STATE::writeHistoryAtRate( num_type rateHz ) {
+    void STATE::writeHistoryAtRate( double rateHz ) {
         data->writeRate = rateHz;
     }
     
@@ -93,7 +93,7 @@ namespace sim {
     HEADER
     void STATE::addDiscreteModelToScheduler( num_type rateHz, discrete::model<T> & model) {
         model.setUpdateRate( rateHz );
-        data->scheduler.addNewModel( Time(1.0/rateHz), &model );
+        data->scheduler.addNewModel( model.getDt(), &model );
     }
     
     HEADER
@@ -141,6 +141,21 @@ namespace sim {
     HEADER
     void STATE::setCurrentTime( const num_type & t ){
         data->time = t;
+    }
+    
+    HEADER
+    void STATE::setCurrentTime( const Time & t) {
+        data->time = t;
+    }
+    
+    HEADER
+    Time & STATE::getTime() {
+        return data->time;
+    }
+    
+    HEADER
+    const Time & STATE::getTime() const {
+        return data->time;
     }
     
     HEADER

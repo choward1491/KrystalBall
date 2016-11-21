@@ -15,8 +15,8 @@ namespace sim {
     Time scheduler<T>::getNextTime(){ return parent::getRootKey(); }
 
     template<typename T>
-    void scheduler<T>::addNewModel( Time firstTime, discrete::model<T>* model ){
-        parent::push(firstTime, model);
+    void scheduler<T>::addNewModel( Time runTime, discrete::model<T>* model ){
+        parent::push(runTime, model);
     }
 
     template<typename T>

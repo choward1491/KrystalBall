@@ -28,16 +28,27 @@ public:
     SampleSim() = default;
     ~SampleSim()= default;
 private:
-    bool isMonteCarloDone() { return true; }
-    bool finishedSimulation(){ return true; }      // method to return whether the sim has finished
-    void finalizeMonteCarloRun(){ printf("Finalize MC Run\n"); }   // method to finalize a monte carlo run
-    void finalize(){ printf("Sim is Finishing\n"); }             // method to finalize the whole completed simulation
+    bool isMonteCarloDone() {
+        bool b = mc_cnt > 100;
+        mc_cnt++;
+        return b;
+    }
+    bool finishedSimulation(){
+        bool b = fs_cnt > 0;
+        fs_cnt++;
+        return b;
+    }
+    void finalizeMonteCarloRun(){ printf("Finalize MC Run\n"); }     // method to finalize a monte carlo run
+    void finalize(){ printf("Sim is Finishing\n"); }                 // method to finalize the whole completed simulation
     void buildTotalDynamicState(){ this->getState().allocate(10); }  // method to construct the total data associated with dynamic models
+    int mc_cnt = 0;
+    int fs_cnt = 0;
 };
 
 int main(int argc, const char * argv[]) {
     
     SampleSim sim;
+    sim.willWriteSimHistory(true);
     sim.run();
     
     return 0;

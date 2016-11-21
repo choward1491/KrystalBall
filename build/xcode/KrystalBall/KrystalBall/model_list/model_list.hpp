@@ -64,6 +64,7 @@ namespace models {
         void addDiscreteModel( dscrt_m & model);
         void setCentralSimState( sim::state<T> & cs );
         int  getTotalNumberStates() const;
+        void updateDynamicModels();
         const DynamicList & getDynamicList() const;
         const DiscreteList& getDiscreteList() const;
         

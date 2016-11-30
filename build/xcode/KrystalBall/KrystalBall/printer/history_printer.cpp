@@ -10,6 +10,7 @@
 #include <vector>
 #include "FileWrap.hpp"
 #include <string>
+#include "Fraction.hpp"
 
 namespace print {
 #define HEADER template<typename T>
@@ -17,10 +18,12 @@ namespace print {
     
     HEADER
     struct HISTORY::Data {
+        std::vector<Fraction*>  fr_vars;
         std::vector<int*>       i_vars;
         std::vector<float*>     f_vars;
         std::vector<double*>    df_vars;
         std::vector<bool*>      b_vars;
+        std::vector<std::string>fr_names;
         std::vector<std::string>i_names;
         std::vector<std::string>f_names;
         std::vector<std::string>df_names;
@@ -97,6 +100,7 @@ namespace print {
     
     HEADER
     void HISTORY::writeDataToFile( FILE* file ) const{
+        printNumList(fr_vars, file)
         printNumList(i_vars, file)
         printNumList(f_vars, file)
         printNumList(df_vars, file)
@@ -106,6 +110,7 @@ namespace print {
     
     HEADER
     void HISTORY::writeNameHeader( FILE* file) const{
+        printNameList(fr_names, file)
         printNameList(i_names, file)
         printNameList(f_names, file)
         printNameList(df_names, file)
@@ -113,6 +118,21 @@ namespace print {
         fprintf(file,"\n");
     }
 
+    
+    template<>
+    template<>
+    void history<float>::addVariableToPrint( Fraction & var, const std::string & name ) {
+        data->fr_vars.push_back(&var);
+        data->fr_names.push_back(name);
+    }
+    
+    template<>
+    template<>
+    void history<double>::addVariableToPrint( Fraction & var, const std::string & name ) {
+        data->fr_vars.push_back(&var);
+        data->fr_names.push_back(name);
+    }
+    
     
     template<>
     template<>

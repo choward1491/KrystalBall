@@ -60,6 +60,35 @@ namespace models {
     HEADER
     void LIST::setCentralSimState( sim::state<T> & cs ){
         data->sim_state = &cs;
+        
+        DynamicList & d_list = data->dynamic_m;
+        DiscreteList& di_list= data->discrete_m;
+        
+        int start_idx = 0;
+        for(int i = 0; i < d_list.size(); ++i ){
+            d_list[i]->setLocalStateStartIndex(start_idx);
+            d_list[i]->setCentralSimState(cs);
+            d_list[i]->initLocalState();
+            start_idx += d_list[i]->numDims();
+        }
+        for(int i = 0; i < di_list.size(); ++i ){
+            di_list[i]->setCentralSimState(cs);
+        }
+        
+    }
+    
+    HEADER
+    void LIST::updateChangesToSimState() {
+        DynamicList & d_list = data->dynamic_m;
+        DiscreteList& di_list= data->discrete_m;
+        for(int i = 0; i < d_list.size(); ++i ){
+            d_list[i]->initLocalState();
+        }
+    }
+    
+    HEADER
+    sim::state<T> & LIST::getSimState() {
+        return *data->sim_state;
     }
     
     HEADER
@@ -78,6 +107,16 @@ namespace models {
     
     HEADER
     const typename LIST::DiscreteList& LIST::getDiscreteList() const {
+        return data->discrete_m;
+    }
+    
+    HEADER
+    typename LIST::DynamicList& LIST::getDynamicList(){
+        return data->dynamic_m;
+    }
+    
+    HEADER
+    typename LIST::DiscreteList& LIST::getDiscreteList(){
         return data->discrete_m;
     }
     

@@ -45,13 +45,14 @@ namespace discrete {
     public:
         typedef T num_type;
         typedef local::state<T> ModelState;
+        typedef print::history<T> Printer;
         
         model();
         virtual ~model();
         virtual std::string name() const;
         virtual void init();
         virtual void update();
-        virtual void setupPrintData( print::history<T> & p );
+        virtual void setupPrintData( Printer & p );
         void setCentralSimState( sim::state<T> & cs );
         void setUpdateRate( num_type rateHz );
         Time getUpdateRate() const;

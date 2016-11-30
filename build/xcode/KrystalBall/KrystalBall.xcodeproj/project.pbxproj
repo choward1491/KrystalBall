@@ -36,6 +36,16 @@
 		AD0F9FCA1D505B7F0034D27C /* RandomNumberGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FC81D505B7F0034D27C /* RandomNumberGenerator.cpp */; };
 		AD0F9FD31D505C600034D27C /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0F9FD11D505C600034D27C /* Parser.cpp */; };
 		AD0FA0171D50603E0034D27C /* TestAutomator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD0FA0141D50603E0034D27C /* TestAutomator.cpp */; };
+		AD5D17FD1DE73D2300E1D10C /* butcher_integrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D17FB1DE73D2300E1D10C /* butcher_integrator.cpp */; };
+		AD5D18001DE73DAD00E1D10C /* butcher_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D17FE1DE73DAD00E1D10C /* butcher_table.cpp */; };
+		AD5D18351DEABADF00E1D10C /* explicit_euler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D18331DEABADF00E1D10C /* explicit_euler.cpp */; };
+		AD5D183A1DEB386200E1D10C /* pendulum_sim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D18381DEB386200E1D10C /* pendulum_sim.cpp */; };
+		AD5D183D1DEB388700E1D10C /* pendulum_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D183B1DEB388700E1D10C /* pendulum_model.cpp */; };
+		AD5D18401DEB543D00E1D10C /* runge_kutta4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D183E1DEB543D00E1D10C /* runge_kutta4.cpp */; };
+		AD5D18441DEB55B200E1D10C /* explicit_trapezoidal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D18421DEB55B200E1D10C /* explicit_trapezoidal.cpp */; };
+		AD5D18481DEB569B00E1D10C /* cashkarp_rk45.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D18461DEB569B00E1D10C /* cashkarp_rk45.cpp */; };
+		AD5D184C1DEB592800E1D10C /* bogacki_shampine23.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D184A1DEB592800E1D10C /* bogacki_shampine23.cpp */; };
+		AD5D18531DEB5C2700E1D10C /* time_step.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5D18511DEB5C2700E1D10C /* time_step.cpp */; };
 		ADBAF9141DD93CFD00634FF1 /* dynamic_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF9121DD93CFD00634FF1 /* dynamic_model.cpp */; };
 		ADBAF9171DD93D1100634FF1 /* discrete_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF9151DD93D1100634FF1 /* discrete_model.cpp */; };
 		ADBAF91B1DD93D8400634FF1 /* model_state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF9191DD93D8400634FF1 /* model_state.cpp */; };
@@ -179,6 +189,27 @@
 		AD0FA0141D50603E0034D27C /* TestAutomator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestAutomator.cpp; path = ../../../../dependencies/TestAutomation/TestAutomation/TestAutomator.cpp; sourceTree = "<group>"; };
 		AD0FA0151D50603E0034D27C /* TestAutomator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TestAutomator.hpp; path = ../../../../dependencies/TestAutomation/TestAutomation/TestAutomator.hpp; sourceTree = "<group>"; };
 		AD0FA0161D50603E0034D27C /* UnitTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UnitTest.hpp; path = ../../../../dependencies/TestAutomation/TestAutomation/UnitTest.hpp; sourceTree = "<group>"; };
+		AD5D17FB1DE73D2300E1D10C /* butcher_integrator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = butcher_integrator.cpp; path = integrator/butcher_integrator.cpp; sourceTree = "<group>"; };
+		AD5D17FC1DE73D2300E1D10C /* butcher_integrator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = butcher_integrator.hpp; path = integrator/butcher_integrator.hpp; sourceTree = "<group>"; };
+		AD5D17FE1DE73DAD00E1D10C /* butcher_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = butcher_table.cpp; path = integrator/butcher_table.cpp; sourceTree = "<group>"; };
+		AD5D17FF1DE73DAD00E1D10C /* butcher_table.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = butcher_table.hpp; path = integrator/butcher_table.hpp; sourceTree = "<group>"; };
+		AD5D18331DEABADF00E1D10C /* explicit_euler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = explicit_euler.cpp; path = integrator/explicit_euler.cpp; sourceTree = "<group>"; };
+		AD5D18341DEABADF00E1D10C /* explicit_euler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = explicit_euler.hpp; path = integrator/explicit_euler.hpp; sourceTree = "<group>"; };
+		AD5D18381DEB386200E1D10C /* pendulum_sim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pendulum_sim.cpp; path = example/pendulum/pendulum_sim.cpp; sourceTree = "<group>"; };
+		AD5D18391DEB386200E1D10C /* pendulum_sim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = pendulum_sim.hpp; path = example/pendulum/pendulum_sim.hpp; sourceTree = "<group>"; };
+		AD5D183B1DEB388700E1D10C /* pendulum_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pendulum_model.cpp; path = example/pendulum/pendulum_model.cpp; sourceTree = "<group>"; };
+		AD5D183C1DEB388700E1D10C /* pendulum_model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = pendulum_model.hpp; path = example/pendulum/pendulum_model.hpp; sourceTree = "<group>"; };
+		AD5D183E1DEB543D00E1D10C /* runge_kutta4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = runge_kutta4.cpp; path = integrator/runge_kutta4.cpp; sourceTree = "<group>"; };
+		AD5D183F1DEB543D00E1D10C /* runge_kutta4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = runge_kutta4.hpp; path = integrator/runge_kutta4.hpp; sourceTree = "<group>"; };
+		AD5D18421DEB55B200E1D10C /* explicit_trapezoidal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = explicit_trapezoidal.cpp; path = integrator/explicit_trapezoidal.cpp; sourceTree = "<group>"; };
+		AD5D18431DEB55B200E1D10C /* explicit_trapezoidal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = explicit_trapezoidal.hpp; path = integrator/explicit_trapezoidal.hpp; sourceTree = "<group>"; };
+		AD5D18461DEB569B00E1D10C /* cashkarp_rk45.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cashkarp_rk45.cpp; path = integrator/cashkarp_rk45.cpp; sourceTree = "<group>"; };
+		AD5D18471DEB569B00E1D10C /* cashkarp_rk45.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = cashkarp_rk45.hpp; path = integrator/cashkarp_rk45.hpp; sourceTree = "<group>"; };
+		AD5D184A1DEB592800E1D10C /* bogacki_shampine23.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bogacki_shampine23.cpp; path = integrator/bogacki_shampine23.cpp; sourceTree = "<group>"; };
+		AD5D184B1DEB592800E1D10C /* bogacki_shampine23.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bogacki_shampine23.hpp; path = integrator/bogacki_shampine23.hpp; sourceTree = "<group>"; };
+		AD5D18511DEB5C2700E1D10C /* time_step.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = time_step.cpp; path = time_step/time_step.cpp; sourceTree = "<group>"; };
+		AD5D18521DEB5C2700E1D10C /* time_step.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = time_step.hpp; path = time_step/time_step.hpp; sourceTree = "<group>"; };
+		AD5D18551DEBC97D00E1D10C /* KrystalBall.profdata */ = {isa = PBXFileReference; lastKnownFileType = file; path = KrystalBall.profdata; sourceTree = "<group>"; };
 		ADBAF9121DD93CFD00634FF1 /* dynamic_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dynamic_model.cpp; path = model/dynamic_model.cpp; sourceTree = "<group>"; };
 		ADBAF9131DD93CFD00634FF1 /* dynamic_model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = dynamic_model.hpp; path = model/dynamic_model.hpp; sourceTree = "<group>"; };
 		ADBAF9151DD93D1100634FF1 /* discrete_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = discrete_model.cpp; path = model/discrete_model.cpp; sourceTree = "<group>"; };
@@ -229,6 +260,7 @@
 				AD0F9F061D5058F60034D27C /* KrystalBall */,
 				AD0F9F961D5059CB0034D27C /* UnitTests */,
 				AD0F9F051D5058F60034D27C /* Products */,
+				AD5D18541DEBC97D00E1D10C /* OptimizationProfiles */,
 			);
 			sourceTree = "<group>";
 		};
@@ -720,9 +752,131 @@
 			name = TestAutomation;
 			sourceTree = "<group>";
 		};
+		AD5D17FA1DE73CCB00E1D10C /* ButcherIntegrator */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D184F1DEB5B1100E1D10C /* schemes */,
+				AD5D184E1DEB5B0600E1D10C /* table */,
+				AD5D184D1DEB5AF900E1D10C /* base */,
+			);
+			name = ButcherIntegrator;
+			sourceTree = "<group>";
+		};
+		AD5D18311DEABAAB00E1D10C /* RK4 */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D183E1DEB543D00E1D10C /* runge_kutta4.cpp */,
+				AD5D183F1DEB543D00E1D10C /* runge_kutta4.hpp */,
+			);
+			name = RK4;
+			sourceTree = "<group>";
+		};
+		AD5D18321DEABAC500E1D10C /* Euler */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D18331DEABADF00E1D10C /* explicit_euler.cpp */,
+				AD5D18341DEABADF00E1D10C /* explicit_euler.hpp */,
+			);
+			name = Euler;
+			sourceTree = "<group>";
+		};
+		AD5D18361DEB382800E1D10C /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D18371DEB383700E1D10C /* Pendulum */,
+			);
+			name = examples;
+			sourceTree = "<group>";
+		};
+		AD5D18371DEB383700E1D10C /* Pendulum */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D18381DEB386200E1D10C /* pendulum_sim.cpp */,
+				AD5D18391DEB386200E1D10C /* pendulum_sim.hpp */,
+				AD5D183B1DEB388700E1D10C /* pendulum_model.cpp */,
+				AD5D183C1DEB388700E1D10C /* pendulum_model.hpp */,
+			);
+			name = Pendulum;
+			sourceTree = "<group>";
+		};
+		AD5D18411DEB558E00E1D10C /* ExplicitTrapezoidal */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D18421DEB55B200E1D10C /* explicit_trapezoidal.cpp */,
+				AD5D18431DEB55B200E1D10C /* explicit_trapezoidal.hpp */,
+			);
+			name = ExplicitTrapezoidal;
+			sourceTree = "<group>";
+		};
+		AD5D18451DEB567B00E1D10C /* CashKarpRK45 */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D18461DEB569B00E1D10C /* cashkarp_rk45.cpp */,
+				AD5D18471DEB569B00E1D10C /* cashkarp_rk45.hpp */,
+			);
+			name = CashKarpRK45;
+			sourceTree = "<group>";
+		};
+		AD5D18491DEB58EA00E1D10C /* bogacki_shampine23 */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D184A1DEB592800E1D10C /* bogacki_shampine23.cpp */,
+				AD5D184B1DEB592800E1D10C /* bogacki_shampine23.hpp */,
+			);
+			name = bogacki_shampine23;
+			sourceTree = "<group>";
+		};
+		AD5D184D1DEB5AF900E1D10C /* base */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D17FB1DE73D2300E1D10C /* butcher_integrator.cpp */,
+				AD5D17FC1DE73D2300E1D10C /* butcher_integrator.hpp */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
+		AD5D184E1DEB5B0600E1D10C /* table */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D17FE1DE73DAD00E1D10C /* butcher_table.cpp */,
+				AD5D17FF1DE73DAD00E1D10C /* butcher_table.hpp */,
+			);
+			name = table;
+			sourceTree = "<group>";
+		};
+		AD5D184F1DEB5B1100E1D10C /* schemes */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D18491DEB58EA00E1D10C /* bogacki_shampine23 */,
+				AD5D18451DEB567B00E1D10C /* CashKarpRK45 */,
+				AD5D18411DEB558E00E1D10C /* ExplicitTrapezoidal */,
+				AD5D18321DEABAC500E1D10C /* Euler */,
+				AD5D18311DEABAAB00E1D10C /* RK4 */,
+			);
+			name = schemes;
+			sourceTree = "<group>";
+		};
+		AD5D18501DEB5BFC00E1D10C /* timestep */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D18511DEB5C2700E1D10C /* time_step.cpp */,
+				AD5D18521DEB5C2700E1D10C /* time_step.hpp */,
+			);
+			name = timestep;
+			sourceTree = "<group>";
+		};
+		AD5D18541DEBC97D00E1D10C /* OptimizationProfiles */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D18551DEBC97D00E1D10C /* KrystalBall.profdata */,
+			);
+			path = OptimizationProfiles;
+			sourceTree = "<group>";
+		};
 		ADBAF90E1DD93C4600634FF1 /* src2 */ = {
 			isa = PBXGroup;
 			children = (
+				AD5D18361DEB382800E1D10C /* examples */,
 				ADBAF9221DD9672000634FF1 /* Simulation */,
 				ADBAF91C1DD93DB100634FF1 /* Lists */,
 				ADBAF90F1DD93C8400634FF1 /* Models */,
@@ -733,6 +887,7 @@
 		ADBAF90F1DD93C8400634FF1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AD5D18501DEB5BFC00E1D10C /* timestep */,
 				ADBAF92B1DD97A8400634FF1 /* printer */,
 				ADBAF9181DD93D4000634FF1 /* state */,
 				ADBAF9111DD93C9500634FF1 /* discrete */,
@@ -808,6 +963,7 @@
 		ADBAF9271DD9697900634FF1 /* integration */ = {
 			isa = PBXGroup;
 			children = (
+				AD5D17FA1DE73CCB00E1D10C /* ButcherIntegrator */,
 			);
 			name = integration;
 			sourceTree = "<group>";
@@ -1005,6 +1161,8 @@
 				AD0F9FBD1D505A0A0034D27C /* NeuronSim.cpp in Sources */,
 				AD0F9F851D5059790034D27C /* DynamicModel.cpp in Sources */,
 				AD0F9FCA1D505B7F0034D27C /* RandomNumberGenerator.cpp in Sources */,
+				AD5D18441DEB55B200E1D10C /* explicit_trapezoidal.cpp in Sources */,
+				AD5D17FD1DE73D2300E1D10C /* butcher_integrator.cpp in Sources */,
 				AD0F9FC11D505A0A0034D27C /* PendulumSim.cpp in Sources */,
 				AD0F9F861D5059790034D27C /* ModelList.cpp in Sources */,
 				AD0F9F8B1D5059790034D27C /* RKCashKarp.cpp in Sources */,
@@ -1017,8 +1175,12 @@
 				ADBAF9381DDC15D600634FF1 /* Timer.cpp in Sources */,
 				ADBAF9261DD9677000634FF1 /* sim_state.cpp in Sources */,
 				AD0F9F081D5058F60034D27C /* main.cpp in Sources */,
+				AD5D18401DEB543D00E1D10C /* runge_kutta4.cpp in Sources */,
+				AD5D18481DEB569B00E1D10C /* cashkarp_rk45.cpp in Sources */,
 				AD0F9F8D1D5059790034D27C /* ButcherTable.cpp in Sources */,
 				AD0F9F891D5059790034D27C /* ExplicitEuler.cpp in Sources */,
+				AD5D18351DEABADF00E1D10C /* explicit_euler.cpp in Sources */,
+				AD5D18531DEB5C2700E1D10C /* time_step.cpp in Sources */,
 				ADBAF92A1DD96EC600634FF1 /* model_list.cpp in Sources */,
 				AD0F9FBA1D505A0A0034D27C /* HeatEquation.cpp in Sources */,
 				ADBAF91B1DD93D8400634FF1 /* model_state.cpp in Sources */,
@@ -1027,8 +1189,11 @@
 				AD0F9FD31D505C600034D27C /* Parser.cpp in Sources */,
 				AD0F9F8C1D5059790034D27C /* RungeKutta4.cpp in Sources */,
 				AD0F9F8A1D5059790034D27C /* ExplicitTrapezoidal.cpp in Sources */,
+				AD5D183D1DEB388700E1D10C /* pendulum_model.cpp in Sources */,
 				AD0F9F8E1D5059790034D27C /* SimState.cpp in Sources */,
 				AD0F9F871D5059790034D27C /* ModelState.cpp in Sources */,
+				AD5D18001DE73DAD00E1D10C /* butcher_table.cpp in Sources */,
+				AD5D184C1DEB592800E1D10C /* bogacki_shampine23.cpp in Sources */,
 				ADBAF9771DDFEF8000634FF1 /* sim_base_details.cpp in Sources */,
 				AD0F9FC61D505B660034D27C /* Fraction.cpp in Sources */,
 				AD0F9F821D5059790034D27C /* Constants.cpp in Sources */,
@@ -1036,6 +1201,7 @@
 				AD0F9F901D5059790034D27C /* Scheduler.cpp in Sources */,
 				ADFC46911D8FB24600A99CCE /* BogackiShampine23.cpp in Sources */,
 				AD0F9F831D5059790034D27C /* DataPrinter.cpp in Sources */,
+				AD5D183A1DEB386200E1D10C /* pendulum_sim.cpp in Sources */,
 				ADBAF9141DD93CFD00634FF1 /* dynamic_model.cpp in Sources */,
 				AD0F9F8F1D5059790034D27C /* SimTime.cpp in Sources */,
 			);
@@ -1137,7 +1303,7 @@
 		AD0F9F0C1D5058F60034D27C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_USE_OPTIMIZATION_PROFILE = NO;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				GCC_UNROLL_LOOPS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1146,7 +1312,7 @@
 		AD0F9F0D1D5058F60034D27C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_USE_OPTIMIZATION_PROFILE = NO;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_UNROLL_LOOPS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

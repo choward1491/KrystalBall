@@ -45,6 +45,8 @@ namespace sim {
     class base {
     public:
         typedef T num_type;
+        typedef state<T> State;
+        
         base();
         virtual ~base() = default;
         void run();
@@ -63,9 +65,9 @@ namespace sim {
         
     protected:
         
-        state<T> & getState();
+        State & getState();
         models::list<T> & getModelList();
-        const state<T> & getState() const;
+        const State & getState() const;
         const models::list<T> & getModelList() const;
         int getNumCompleteMonteCarlo() const;
         
@@ -107,7 +109,7 @@ namespace sim {
         virtual void finalize();                // method to finalize the whole completed simulation
         virtual void buildTotalDynamicState();  // method to construct the total data associated with dynamic models
         virtual void setupTimeIntegration();    // method to setup any time integration stuff
-        virtual void simulateTimeStep();        // method to do single simulation integration step for all dynamic models
+        virtual void simulateTimeStep( num_type dt ); // method to do single simulation integration step for all dynamic models
         
     };
     

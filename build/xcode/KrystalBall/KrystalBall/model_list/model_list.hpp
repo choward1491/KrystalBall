@@ -63,10 +63,14 @@ namespace models {
         void addDynamicModel ( dyn_m & model );
         void addDiscreteModel( dscrt_m & model);
         void setCentralSimState( sim::state<T> & cs );
+        void updateChangesToSimState();
         int  getTotalNumberStates() const;
         void updateDynamicModels();
+        sim::state<T> & getSimState();
         const DynamicList & getDynamicList() const;
         const DiscreteList& getDiscreteList() const;
+        DynamicList & getDynamicList() ;
+        DiscreteList& getDiscreteList() ;
         
     private:
         struct Data;

@@ -1,8 +1,8 @@
 //
-//  uniform_sim.hpp
+//  time_step.hpp
 //  KrystalBall
 //
-//  Created by Christian J Howard on 11/17/16.
+//  Created by Christian J Howard on 11/27/16.
 //
 //  The MIT License (MIT)
 //    Copyright © 2016 Christian Howard. All rights reserved.
@@ -27,28 +27,18 @@
 //
 //
 
-#ifndef uniform_sim_h
-#define uniform_sim_h
+#ifndef time_step_hpp
+#define time_step_hpp
 
-#include "sim_base.hpp"
-
-namespace sim {
+#include "discrete_model.hpp"
+#include <string>
     
-    template<typename T, template<typename> class Integrator>
-    class uniform : public base<T> {
-    public:
-        uniform() = default;
-        Integrator<T> & getIntegrator();
-        
-    private:
-        Integrator<T> integ;
-        void setupTimeIntegration() final;    // method to setup any time integration stuff
-        void simulateTimeStep( typename base<T>::num_type dt ) final;
-        void buildTotalDynamicState() final;
-    };
-    
-}
+template<typename T = double>
+class time_step : public discrete::model<T> {
+public:
+    time_step() = default;
+    ~time_step() = default;
+    virtual std::string name() const;
+};
 
-#include "uniform_sim_details.hpp"
-
-#endif /* uniform_sim_h */
+#endif /* time_step_hpp */

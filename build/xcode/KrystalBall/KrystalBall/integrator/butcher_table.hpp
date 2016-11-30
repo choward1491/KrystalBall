@@ -1,8 +1,8 @@
 //
-//  uniform_sim.hpp
+//  butcher_table.hpp
 //  KrystalBall
 //
-//  Created by Christian J Howard on 11/17/16.
+//  Created by Christian J Howard on 11/24/16.
 //
 //  The MIT License (MIT)
 //    Copyright © 2016 Christian Howard. All rights reserved.
@@ -27,28 +27,46 @@
 //
 //
 
-#ifndef uniform_sim_h
-#define uniform_sim_h
+#ifndef butcher_table_hpp
+#define butcher_table_hpp
 
-#include "sim_base.hpp"
+#include <stdio.h>
+#include <vector>
 
-namespace sim {
-    
-    template<typename T, template<typename> class Integrator>
-    class uniform : public base<T> {
-    public:
-        uniform() = default;
-        Integrator<T> & getIntegrator();
+namespace integrate {
+    namespace table {
         
-    private:
-        Integrator<T> integ;
-        void setupTimeIntegration() final;    // method to setup any time integration stuff
-        void simulateTimeStep( typename base<T>::num_type dt ) final;
-        void buildTotalDynamicState() final;
-    };
-    
+        template<typename T>
+        class butcher {
+        public:
+            typedef T num_type;
+            
+            butcher();
+            butcher( int size, int num_compute = 1 );
+            void resize( int size, int num_compute = 1 );
+            
+            num_type & c(int i);
+            num_type & b(int row, int column);
+            num_type & a(int row, int column);
+            const num_type & c(int i) const;
+            const num_type & b(int row, int column) const;
+            const num_type & a(int row, int column) const;
+            
+            bool isImplicit() const;
+            bool isExplicit() const;
+            bool isAdaptive() const;
+            
+            int numSteps() const;
+            int numEstimates() const;
+            
+        private:
+            int dim;
+            int num_estimates;
+            std::vector<num_type> c_;
+            std::vector<num_type> a_;
+            std::vector<num_type> b_;
+        };
+    }
 }
 
-#include "uniform_sim_details.hpp"
-
-#endif /* uniform_sim_h */
+#endif /* butcher_table_hpp */

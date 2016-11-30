@@ -194,16 +194,22 @@ namespace sim {
         }
         
         // 2) simulate up to time t_{i+1} and update auxilary vars
-        simulateTimeStep();
+        num_type dt = static_cast<num_type>(nextTime - currentTime);
+        simulateTimeStep(dt);
         model_list.updateDynamicModels();
         
-        // 3) execute models in queue that must run at time t_{i+1}
-        // 4) add models to scheduler based on their next runtime
+        // 3) update time to new time
+        currentTime = nextTime;
+        
+        // 4) execute models in queue that must run at time t_{i+1}
+        // 5) add models to scheduler based on their next runtime
         while( m_queue.numModels() != 0 ) {
             d_ptr = m_queue.popModel();
             d_ptr->update();
-            s.addNewModel( d_ptr->getNextUpdateTime(currentTime), d_ptr);
+            s.addNewModel( d_ptr->getNextUpdateTime(nextTime), d_ptr);
         }
+        
+        
     }
     
     
@@ -278,7 +284,7 @@ namespace sim {
     void BASE::setupTimeIntegration() {}
     
     HEADER
-    void BASE::simulateTimeStep() {}
+    void BASE::simulateTimeStep( num_type dt ) {}
     
     
 #undef HEADER

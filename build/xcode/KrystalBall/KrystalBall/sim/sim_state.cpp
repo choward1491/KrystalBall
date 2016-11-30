@@ -82,6 +82,7 @@ namespace sim {
     void STATE::addHistoryWriterToScheduler(){
         if( data->doWriteData ){
             addDiscreteModelToScheduler(data->writeRate, data->data_writer);
+            data->data_writer.addVariableToPrint( data->time, "Time" );
         }
     }
     

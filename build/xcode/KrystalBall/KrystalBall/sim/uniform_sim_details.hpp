@@ -36,7 +36,8 @@ namespace sim {
     
     template<typename T, template<typename> class Integrator>
     void uniform<T,Integrator>::setupTimeIntegration() {
-        integ.setNumDimensions(this->getState().size());
+        integ.setNumDimensions( this->getState().size() );
+        integ.setCentralSimState( this->getState() );
     }
 
     template<typename T, template<typename> class Integrator>
@@ -45,8 +46,19 @@ namespace sim {
     }
     
     template<typename T, template<typename> class Integrator>
-    void uniform<T,Integrator>::simulateTimeStep() {
-        // TODO: implement integration of dynamic models
+    void uniform<T,Integrator>::simulateTimeStep( typename base<T>::num_type dt ) {
+        integ.integrate( this->getState().getTime(), dt, this->getModelList().getDynamicList() );
+    }
+    
+    template<typename T, template<typename> class Integrator>
+    void uniform<T,Integrator>::buildTotalDynamicState() {
+        sim::state<T> & s = this->getState();
+        models::list<T> & ml = this->getModelList();
+        if( s.size() == 0 ){
+            s.allocate( ml.getTotalNumberStates() );
+            ml.setCentralSimState(s);
+        }
+        
     }
     
 }

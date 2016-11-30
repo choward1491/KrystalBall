@@ -1,8 +1,8 @@
 //
-//  dynamic.hpp
+//  butcher_integrator.hpp
 //  KrystalBall
 //
-//  Created by Christian J Howard on 11/13/16.
+//  Created by Christian J Howard on 11/24/16.
 //
 //  The MIT License (MIT)
 //    Copyright © 2016 Christian Howard. All rights reserved.
@@ -27,50 +27,51 @@
 //
 //
 
-#ifndef dynamic_hpp
-#define dynamic_hpp
+#ifndef butcher_integrator_hpp
+#define butcher_integrator_hpp
 
-#include <stdio.h>
-#include <string>
-#include <memory>
+#include "butcher_table.hpp"
+#include "dynamic_model.hpp"
+#include <vector>
 
-namespace local { template<typename T> class state; }
 namespace sim   { template<typename T> class state; }
-namespace print { template<typename T> class history; }
 
-namespace dynamic {
+namespace integrate {
     
-    template<typename T = double>
-    class model {
+    template<typename T>
+    class butcher {
     public:
         typedef T num_type;
-        typedef local::state<T> ModelState;
-        typedef print::history<T> Printer;
+        typedef dynamic::model<T>       dyn_m;
+        typedef std::vector<dyn_m*>     DynamicList;
         
-        model();
-        virtual ~model();
-        virtual std::string name() const;
-        
-        virtual void init();
-        virtual void update();
-        virtual int  numDims() const;
-        virtual void operator()( num_type & time, ModelState & dqdt );
-        
-        virtual void setupPrintData( Printer & p );
+        butcher();
+        ~butcher();
+        void setNumDimensions( int numDimensions );
+        void integrate( num_type time, num_type dt, DynamicList & list);
+        void setTolerance( num_type tol );
         void setCentralSimState( sim::state<T> & cs );
-        void initLocalState();
-        void setLocalStateStartIndex(int idx );
+        num_type getTolerance() const;
         
     protected:
-        sim::state<T> & getCentralSimState();
-        local::state<T> & getLocalState();
-        T & stateAt(int idx);
-    private:
+        table::butcher<num_type> btable;
         
-        struct ModelData;
-        std::unique_ptr<ModelData> data;
+    private:
+        num_type tol;
+        int numDims;
+        virtual num_type newStepSize( num_type dt, num_type error ){ return dt; }
+        void computeNewStep( num_type * y0, num_type* dydt, num_type dt, num_type * out);
+        void computeDerivatives( num_type time, num_type * dqdt, DynamicList & list );
+        void adaptiveIntegration( num_type time, num_type dt , num_type* inOutState, DynamicList & list );
+        void nominalIntegration( num_type time, num_type dt , num_type* inOutState, DynamicList & list );
+        std::vector<num_type*> K;
+        num_type *tmp;
+        num_type *y1, *y2; // for adaptive stuff
+        sim::state<T> * sim_state;
+        std::vector<bool>    hasComputed;
+        
     };
     
 }
 
-#endif /* dynamic_hpp */
+#endif /* butcher_integrator_hpp */

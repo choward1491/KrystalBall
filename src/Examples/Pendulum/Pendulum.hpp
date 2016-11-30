@@ -46,14 +46,23 @@ public:
      * \returns None
      */
     virtual void initialize(){
-        mass            = 0*generator->rand() * 50 + 50;
+        /*mass            = 0*generator->rand() * 50 + 50;
         dampening       = 0*generator->rand() * 15 + 15;
         lengthPendulum  = 0*generator->rand() * 10 + 1;
         gravity         = 9.81;
         state[0]        = Constants::pi/3;
         state[1]        = Constants::pi/12;
         theta           = state[0];
+        thetaDot        = state[1];*/
+        
+        mass = 1;
+        dampening = 1;
+        lengthPendulum = 15;
+        state[0] = Constants::pi/6;
+        state[1] = 0.0;
+        theta           = state[0];
         thetaDot        = state[1];
+        gravity = 9.81;
     }
     
     

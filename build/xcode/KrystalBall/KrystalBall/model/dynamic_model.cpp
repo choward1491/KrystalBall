@@ -21,6 +21,7 @@ namespace dynamic {
     struct MODEL::ModelData {
         ModelData():sim_state(nullptr){}
         sim::state<T> * sim_state;
+        local::state<T> state;
     };
     
     HEADER
@@ -73,6 +74,27 @@ namespace dynamic {
         return *data->sim_state;
     }
     
+    HEADER
+    void MODEL::initLocalState() {
+        data->state.setReferenceAddress(data->sim_state->getStateRef());
+        data->state.setNumDims(numDims());
+        data->state.setDataAddress();
+    }
+    
+    HEADER
+    void MODEL::setLocalStateStartIndex(int idx ) {
+        data->state.setStartIndex(idx);
+    }
+    
+    HEADER
+    local::state<T> & MODEL::getLocalState() {
+        return data->state;
+    }
+    
+    HEADER
+    T & MODEL::stateAt(int idx) {
+        return data->state[idx];
+    }
     
     template class model<double>;
     template class model<float>;

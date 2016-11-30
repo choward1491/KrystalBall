@@ -37,8 +37,8 @@ void allocVectorPointers( std::vector<double*> & vec , int num ){
     }
 }
 
-void ButcherIntegrator::setTolerance( double tol ){
-    
+void ButcherIntegrator::setTolerance( double tol_ ){
+    tol = tol_;
 }
 
 ButcherIntegrator::ButcherIntegrator():numDims(-1),tmp(0),y1(0),y2(0),tol(1e-5){

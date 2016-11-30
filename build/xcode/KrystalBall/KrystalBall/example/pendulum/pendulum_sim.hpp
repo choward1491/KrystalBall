@@ -1,8 +1,8 @@
 //
-//  uniform_sim.hpp
+//  pendulum_sim.hpp
 //  KrystalBall
 //
-//  Created by Christian J Howard on 11/17/16.
+//  Created by Christian J Howard on 11/27/16.
 //
 //  The MIT License (MIT)
 //    Copyright © 2016 Christian Howard. All rights reserved.
@@ -27,28 +27,40 @@
 //
 //
 
-#ifndef uniform_sim_h
-#define uniform_sim_h
+#ifndef pendulum_sim_hpp
+#define pendulum_sim_hpp
 
-#include "sim_base.hpp"
+#include <stdio.h>
+#include "uniform_sim.hpp"
+#include "explicit_euler.hpp"
+#include "runge_kutta4.hpp"
+#include "cashkarp_rk45.hpp"
+#include "bogacki_shampine23.hpp"
+#include "pendulum_model.hpp"
+#include "Timer.hpp"
+#include "time_step.hpp"
 
-namespace sim {
+namespace pendulum {
     
-    template<typename T, template<typename> class Integrator>
-    class uniform : public base<T> {
+    typedef double type;
+    
+    class simulation : public sim::uniform<type,integrate::cashkarp_rk45> {
     public:
-        uniform() = default;
-        Integrator<T> & getIntegrator();
+        simulation();
+        ~simulation() = default;
         
     private:
-        Integrator<T> integ;
-        void setupTimeIntegration() final;    // method to setup any time integration stuff
-        void simulateTimeStep( typename base<T>::num_type dt ) final;
-        void buildTotalDynamicState() final;
+        pendulum::model pm;
+        time_step<type> ts;
+        Timer timer;
+        bool isMonteCarloDone();
+        void linkModelsToSim();         // method to link models to sim
+        bool finishedSimulation();      // method to return whether the sim has finished
+        void finalizeMonteCarloRun();   // method to finalize a monte carlo run
+        void finalize();
     };
+    
     
 }
 
-#include "uniform_sim_details.hpp"
-
-#endif /* uniform_sim_h */
+#endif /* pendulum_sim_hpp */

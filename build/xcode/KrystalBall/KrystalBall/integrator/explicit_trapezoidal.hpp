@@ -1,8 +1,8 @@
 //
-//  uniform_sim.hpp
+//  explicit_trapezoidal.hpp
 //  KrystalBall
 //
-//  Created by Christian J Howard on 11/17/16.
+//  Created by Christian J Howard on 11/27/16.
 //
 //  The MIT License (MIT)
 //    Copyright © 2016 Christian Howard. All rights reserved.
@@ -27,28 +27,19 @@
 //
 //
 
-#ifndef uniform_sim_h
-#define uniform_sim_h
+#ifndef explicit_trapezoidal_hpp
+#define explicit_trapezoidal_hpp
 
-#include "sim_base.hpp"
+#include "butcher_integrator.hpp"
 
-namespace sim {
+namespace integrate {
     
-    template<typename T, template<typename> class Integrator>
-    class uniform : public base<T> {
+    template<typename T>
+    class explicit_trapezoidal : public butcher<T> {
     public:
-        uniform() = default;
-        Integrator<T> & getIntegrator();
-        
-    private:
-        Integrator<T> integ;
-        void setupTimeIntegration() final;    // method to setup any time integration stuff
-        void simulateTimeStep( typename base<T>::num_type dt ) final;
-        void buildTotalDynamicState() final;
+        explicit_trapezoidal();
     };
     
 }
 
-#include "uniform_sim_details.hpp"
-
-#endif /* uniform_sim_h */
+#endif /* explicit_trapezoidal_hpp */

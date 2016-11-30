@@ -25,15 +25,15 @@ public:
         timer.start();
         std::string historyFile("/Users/christianjhoward/history.txt");
         setSimHistoryPath(historyFile);
-        state.printFrequency = 1;
-        numMC = 100;
-        writeSimHistory = true;
+        state.printFrequency = 10;
+        numMC = 1000;
+        writeSimHistory = false;
         integrator.setTolerance(1e-10);
     }
    
     
     void _linkModelsToSim( SimState & state ){
-        addDiscrete(&tstep, 1);
+        addDiscrete(&tstep, 100);
         addDynamics(&pendulum);
     }
     void _connectModelsTogether(){

@@ -1,8 +1,8 @@
 //
-//  uniform_sim.hpp
+//  pendulum_model.hpp
 //  KrystalBall
 //
-//  Created by Christian J Howard on 11/17/16.
+//  Created by Christian J Howard on 11/27/16.
 //
 //  The MIT License (MIT)
 //    Copyright © 2016 Christian Howard. All rights reserved.
@@ -27,28 +27,36 @@
 //
 //
 
-#ifndef uniform_sim_h
-#define uniform_sim_h
+#ifndef pendulum_model_hpp
+#define pendulum_model_hpp
 
-#include "sim_base.hpp"
+#include <stdio.h>
+#include "dynamic_model.hpp"
 
-namespace sim {
+
+namespace pendulum {
     
-    template<typename T, template<typename> class Integrator>
-    class uniform : public base<T> {
+    typedef double type;
+    class model : public dynamic::model<type> {
     public:
-        uniform() = default;
-        Integrator<T> & getIntegrator();
+        model() = default;
+        ~model() = default;
+        void setMass( float m_ );
+        void setDampening( float c_ );
+        void setPendulumLength( float l_ );
+        
+        virtual std::string name() const;
+        virtual void init();
+        virtual void update();
+        virtual int  numDims() const;
+        virtual void operator()( num_type & time, ModelState & dqdt );
+        virtual void setupPrintData( Printer & p );
         
     private:
-        Integrator<T> integ;
-        void setupTimeIntegration() final;    // method to setup any time integration stuff
-        void simulateTimeStep( typename base<T>::num_type dt ) final;
-        void buildTotalDynamicState() final;
+        float m, c, l;
     };
     
 }
 
-#include "uniform_sim_details.hpp"
 
-#endif /* uniform_sim_h */
+#endif /* pendulum_model_hpp */

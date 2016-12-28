@@ -6,4 +6,4 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <HeatEquation.hpp>
+#include "HeatEquation.hpp"

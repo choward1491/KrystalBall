@@ -30,7 +30,7 @@
 #ifndef uniform_sim_h
 #define uniform_sim_h
 
-#include <run_time_base/sim/sim_base.hpp>
+#include "sim_base.hpp"
 
 namespace sim {
     
@@ -50,6 +50,6 @@ namespace sim {
     
 }
 
-#include <run_time_base/sim/uniform_sim_details.hpp>
+#include "uniform_sim_details.hpp"
 
 #endif /* uniform_sim_h */

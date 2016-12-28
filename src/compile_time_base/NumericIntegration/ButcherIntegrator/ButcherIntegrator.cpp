@@ -6,9 +6,9 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <ButcherIntegrator.hpp>
+#include "ButcherIntegrator.hpp"
 #include <math.h>
-//#include <libiomp/omp.h>
+//#include "libiomp/omp.h"
 
 //ButcherTable btable;
 //int numDims;

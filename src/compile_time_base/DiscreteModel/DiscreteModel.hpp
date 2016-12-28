@@ -31,10 +31,10 @@
 #define DiscreteModel_hpp
 
 #include <stdio.h>
-#include <PreciseTime.h>
-#include <prng.hpp>
+#include "PreciseTime.h"
+#include "prng.hpp"
 #include <string>
-#include <SimExceptions.hpp>
+#include "SimExceptions.hpp"
 
 typedef PRNG Rand;
 class SimState;

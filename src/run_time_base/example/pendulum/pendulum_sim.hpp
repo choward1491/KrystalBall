@@ -30,15 +30,14 @@
 #ifndef pendulum_sim_hpp
 #define pendulum_sim_hpp
 
-#include <stdio.h>
-#include <run_time_base/sim/uniform_sim.hpp>
-#include <run_time_base/integrator/explicit_euler.hpp>
-#include <run_time_base/integrator/runge_kutta4.hpp>
-#include <run_time_base/integrator/cashkarp_rk45.hpp>
-#include <run_time_base/integrator/bogacki_shampine23.hpp>
-#include <run_time_base/example/pendulum/pendulum_model.hpp>
-#include <shared/Timer.hpp>
-#include <run_time_base/time_step/time_step.hpp>
+#include "uniform_sim.hpp"
+#include "explicit_euler.hpp"
+#include "runge_kutta4.hpp"
+#include "cashkarp_rk45.hpp"
+#include "bogacki_shampine23.hpp"
+#include "pendulum_model.hpp"
+#include "Timer.hpp"
+#include "time_step.hpp"
 
 namespace pendulum {
     

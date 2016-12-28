@@ -9,8 +9,8 @@
 #ifndef ButcherIntegrator_hpp
 #define ButcherIntegrator_hpp
 
-#include <ButcherTable.hpp>
-#include <DynamicModel.hpp>
+#include "ButcherTable.hpp"
+#include "DynamicModel.hpp"
 
 
 class ButcherIntegrator {

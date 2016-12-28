@@ -30,7 +30,7 @@
 #ifndef ExplicitTrapezoidal_hpp
 #define ExplicitTrapezoidal_hpp
 
-#include <ButcherIntegrator.hpp>
+#include "ButcherIntegrator.hpp"
 
 class ExplicitTrapezoidal : public ButcherIntegrator {
 public:

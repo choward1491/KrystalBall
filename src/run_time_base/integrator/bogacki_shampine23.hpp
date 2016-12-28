@@ -30,7 +30,7 @@
 #ifndef bogacki_shampine23_hpp
 #define bogacki_shampine23_hpp
 
-#include <run_time_base/integrator/butcher_integrator.hpp>
+#include "butcher_integrator.hpp"
 
 namespace integrate {
     

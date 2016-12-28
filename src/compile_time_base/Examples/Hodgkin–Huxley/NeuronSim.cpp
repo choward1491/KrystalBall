@@ -6,4 +6,4 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <NeuronSim.hpp>
+#include "NeuronSim.hpp"

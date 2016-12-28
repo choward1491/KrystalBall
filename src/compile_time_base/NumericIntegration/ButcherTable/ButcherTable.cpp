@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <ButcherTable.hpp>
+#include "ButcherTable.hpp"
 
 /*
  int dim;

@@ -31,10 +31,10 @@
 #define DataPrinter_hpp
 
 #include <stdio.h>
-#include <DiscreteModel.hpp>
+#include "DiscreteModel.hpp"
 #include <vector>
 #include <string>
-#include <FileWrap.hpp>
+#include "FileWrap.hpp"
 
 typedef std::vector<const double*> PrintValueList;
 typedef std::vector<std::string> PrintNames;

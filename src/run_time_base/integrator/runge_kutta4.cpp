@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/integrator/runge_kutta4.hpp>
+#include "runge_kutta4.hpp"
 
 namespace integrate {
     

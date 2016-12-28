@@ -30,7 +30,7 @@
 #ifndef time_step_hpp
 #define time_step_hpp
 
-#include <run_time_base/model/discrete_model.hpp>
+#include "discrete_model.hpp"
 #include <string>
     
 template<typename T = double>

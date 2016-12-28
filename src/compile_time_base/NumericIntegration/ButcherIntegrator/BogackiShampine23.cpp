@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <BogackiShampine23.hpp>
+#include "BogackiShampine23.hpp"
 #include <math.h>
 
 BogackiShampine23::BogackiShampine23():ButcherIntegrator(){

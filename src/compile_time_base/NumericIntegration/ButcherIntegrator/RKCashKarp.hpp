@@ -30,7 +30,7 @@
 #ifndef RKCashKarp_hpp
 #define RKCashKarp_hpp
 
-#include <ButcherIntegrator.hpp>
+#include "ButcherIntegrator.hpp"
 
 class RKCashKarp : public ButcherIntegrator {
 public:

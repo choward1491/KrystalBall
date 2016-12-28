@@ -6,12 +6,12 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/sim/sim_state.hpp>
-#include <run_time_base/sim/sim_scheduler.hpp>
-#include <run_time_base/printer/history_printer.hpp>
-#include <shared/PreciseTime.h>
-#include <parser/parser.hpp>
-#include <prng/prng.hpp>
+#include "sim_state.hpp"
+#include "sim_scheduler.hpp"
+#include "history_printer.hpp"
+#include "PreciseTime.h"
+#include "parser/parser.hpp"
+#include "prng/prng.hpp"
 #include <vector>
 
 typedef PRNG RNG;

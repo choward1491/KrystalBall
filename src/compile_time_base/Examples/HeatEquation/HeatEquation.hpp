@@ -31,8 +31,8 @@
 #define HeatEquation_hpp
 
 #include <stdio.h>
-#include <DynamicModel.hpp>
-#include <SimState.hpp>
+#include "DynamicModel.hpp"
+#include "SimState.hpp"
 #include <vector>
 #include <math.h>
 

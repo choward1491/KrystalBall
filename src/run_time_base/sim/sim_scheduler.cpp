@@ -6,8 +6,8 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/sim/sim_scheduler.hpp>
-#include <shared/PreciseTime.h>
+#include "sim_scheduler.hpp"
+#include "PreciseTime.h"
 
 namespace sim {
     

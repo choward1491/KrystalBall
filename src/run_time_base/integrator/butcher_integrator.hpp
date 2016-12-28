@@ -30,8 +30,8 @@
 #ifndef butcher_integrator_hpp
 #define butcher_integrator_hpp
 
-#include <run_time_base/integrator/butcher_table.hpp>
-#include <run_time_base/model/dynamic_model.hpp>
+#include "butcher_table.hpp"
+#include "dynamic_model.hpp"
 #include <vector>
 
 namespace sim   { template<typename T> class state; }

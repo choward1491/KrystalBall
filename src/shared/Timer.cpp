@@ -6,7 +6,7 @@
 //  Copyright © 2015 Christian Howard. All rights reserved.
 //
 
-#include <shared/Timer.hpp>
+#include "Timer.hpp"
 
 void Timer::start(){
     start_ = std::clock();

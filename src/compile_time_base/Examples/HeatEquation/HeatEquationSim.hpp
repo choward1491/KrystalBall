@@ -30,13 +30,13 @@
 #ifndef HeatEquationSim_hpp
 #define HeatEquationSim_hpp
 
-#include <Simulator.hpp>
-#include <HeatEquation.hpp>
-#include <ExplicitEuler.hpp>
-#include <RungeKutta4.hpp>
-#include <ExplicitTrapezoidal.hpp>
-#include <Timer.hpp>
-#include <RKCashKarp.hpp>
+#include "Simulator.hpp"
+#include "HeatEquation.hpp"
+#include "ExplicitEuler.hpp"
+#include "RungeKutta4.hpp"
+#include "ExplicitTrapezoidal.hpp"
+#include "Timer.hpp"
+#include "RKCashKarp.hpp"
 
 
 class HeatEquationSim : public Simulator<HeatEquationSim,RKCashKarp> {

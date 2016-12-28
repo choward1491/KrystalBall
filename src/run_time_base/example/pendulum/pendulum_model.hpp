@@ -30,8 +30,7 @@
 #ifndef pendulum_model_hpp
 #define pendulum_model_hpp
 
-#include <stdio.h>
-#include <run_time_base/model/dynamic_model.hpp>
+#include "dynamic_model.hpp"
 
 
 namespace pendulum {

@@ -30,10 +30,10 @@
 #ifndef sim_base_h
 #define sim_base_h
 
-#include <run_time_base/model_list/model_list.hpp>
-#include <run_time_base/sim/sim_state.hpp>
-#include <run_time_base/model/discrete_model.hpp>
-#include <run_time_base/model/dynamic_model.hpp>
+#include "model_list.hpp"
+#include "sim_state.hpp"
+#include "discrete_model.hpp"
+#include "dynamic_model.hpp"
 
 class fraction;
 typedef fraction Time;

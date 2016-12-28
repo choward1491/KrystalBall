@@ -6,4 +6,4 @@
 //  Copyright © 2015 Christian Howard. All rights reserved.
 //
 
-#include <DiscreteModel.hpp>
+#include "DiscreteModel.hpp"

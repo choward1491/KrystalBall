@@ -6,9 +6,9 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/model/dynamic_model.hpp>
-#include <run_time_base/model/model_state.hpp>
-#include <run_time_base/sim/sim_state.hpp>
+#include "dynamic_model.hpp"
+#include "model_state.hpp"
+#include "sim_state.hpp"
 
 namespace dynamic {
     

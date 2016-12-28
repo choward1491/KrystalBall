@@ -6,9 +6,9 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/integrator/butcher_integrator.hpp>
-#include <run_time_base/model/model_state.hpp>
-#include <run_time_base/sim/sim_state.hpp>
+#include "butcher_integrator.hpp"
+#include "model_state.hpp"
+#include "sim_state.hpp"
 #include <cmath>
 
 namespace integrate {

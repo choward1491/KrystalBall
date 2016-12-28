@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <ExplicitTrapezoidal.hpp>
+#include "ExplicitTrapezoidal.hpp"
 
 ExplicitTrapezoidal::ExplicitTrapezoidal():ButcherIntegrator(){
     btable.resize(2);

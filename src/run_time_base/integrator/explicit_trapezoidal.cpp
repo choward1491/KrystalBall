@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/integrator/explicit_trapezoidal.hpp>
+#include "explicit_trapezoidal.hpp"
 
 namespace integrate {
     

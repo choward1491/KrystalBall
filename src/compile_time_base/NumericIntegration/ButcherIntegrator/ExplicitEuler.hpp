@@ -9,7 +9,7 @@
 #ifndef ExplicitEuler_hpp
 #define ExplicitEuler_hpp
 
-#include <ButcherIntegrator.hpp>
+#include "ButcherIntegrator.hpp"
 
 class ExplicitEuler : public ButcherIntegrator {
 public:

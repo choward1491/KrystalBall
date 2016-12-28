@@ -30,13 +30,13 @@
 #ifndef NeuronSim_hpp
 #define NeuronSim_hpp
 
-#include <Simulator.hpp>
-#include <HodgkinHuxleyNeuronModel.hpp>
-#include <ExplicitEuler.hpp>
-#include <RungeKutta4.hpp>
-#include <ExplicitTrapezoidal.hpp>
-#include <Timer.hpp>
-#include <RKCashKarp.hpp>
+#include "Simulator.hpp"
+#include "HodgkinHuxleyNeuronModel.hpp"
+#include "ExplicitEuler.hpp"
+#include "RungeKutta4.hpp"
+#include "ExplicitTrapezoidal.hpp"
+#include "Timer.hpp"
+#include "RKCashKarp.hpp"
 
 class NeuronSim : public Simulator<NeuronSim,RKCashKarp> {
 public:

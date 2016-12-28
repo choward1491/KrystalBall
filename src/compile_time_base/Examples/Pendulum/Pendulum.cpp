@@ -6,5 +6,5 @@
 //  Copyright © 2015 Christian Howard. All rights reserved.
 //
 
-#include <Pendulum.hpp>
+#include "Pendulum.hpp"
 

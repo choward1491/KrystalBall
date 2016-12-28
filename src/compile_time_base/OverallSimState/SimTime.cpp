@@ -6,7 +6,7 @@
 //  Copyright © 2015 Christian Howard. All rights reserved.
 //
 
-#include <SimTime.hpp>
+#include "SimTime.hpp"
 
 SimTime::SimTime(){
     nullTime();

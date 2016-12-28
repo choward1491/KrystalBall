@@ -27,9 +27,9 @@
 //
 //
 
-#include <run_time_base/sim/sim_base.hpp>
-#include <run_time_base/printer/history_printer.hpp>
-#include <shared/PreciseTime.h>
+#include "sim_base.hpp"
+#include "history_printer.hpp"
+#include "PreciseTime.h"
 #include <math.h>
 
 namespace sim {
@@ -184,8 +184,8 @@ namespace sim {
     void BASE::runTimeStep() {
         discrete::model<num_type> * d_ptr = nullptr;
         sim::scheduler<num_type> & s = state.getScheduler();
-        Time & currentTime = state.getTime();
-        Time nextTime = s.getNextTime();
+        Time & currentTime  = state.getTime();
+        Time & nextTime     = s.getNextTime();
         
         
         // 1) get all discrete models that happen at time t_{i+1}
@@ -208,8 +208,6 @@ namespace sim {
             d_ptr->update();
             s.addNewModel( d_ptr->getNextUpdateTime(nextTime), d_ptr);
         }
-        
-        
     }
     
     

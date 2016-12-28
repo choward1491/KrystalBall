@@ -30,8 +30,8 @@
 #ifndef uniform_sim_details_h
 #define uniform_sim_details_h
 
-#include <run_time_base/sim/uniform_sim.hpp>
-#include <shared/PreciseTime.h>
+#include "uniform_sim.hpp"
+#include "PreciseTime.h"
 
 namespace sim {
     

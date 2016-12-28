@@ -9,7 +9,7 @@
 #ifndef RungeKutta4_hpp
 #define RungeKutta4_hpp
 
-#include <ButcherIntegrator.hpp>
+#include "ButcherIntegrator.hpp"
 
 class RungeKutta4 : public ButcherIntegrator {
 public:

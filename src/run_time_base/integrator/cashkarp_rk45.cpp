@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/integrator/cashkarp_rk45.hpp>
+#include "cashkarp_rk45.hpp"
 #include <cmath>
 
 namespace integrate {

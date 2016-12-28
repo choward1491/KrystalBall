@@ -6,10 +6,10 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/sim/sim_state.hpp>
-#include <run_time_base/model_list/model_list.hpp>
-#include <run_time_base/model/dynamic_model.hpp>
-#include <run_time_base/model/discrete_model.hpp>
+#include "sim_state.hpp"
+#include "model_list.hpp"
+#include "dynamic_model.hpp"
+#include "discrete_model.hpp"
 
 namespace models {
 #define HEADER template<typename T>

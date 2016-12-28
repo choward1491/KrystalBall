@@ -9,7 +9,7 @@
 #ifndef NumericIntegration_h
 #define NumericIntegration_h
 
-#include <ExplicitEuler.hpp>
+#include "ExplicitEuler.hpp"
 
 
 #endif /* NumericIntegration_h */

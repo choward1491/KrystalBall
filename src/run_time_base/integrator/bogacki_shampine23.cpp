@@ -6,7 +6,8 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/integrator/bogacki_shampine23.hpp>
+
+#include "bogacki_shampine23.hpp"
 #include <cmath>
 
 namespace integrate {

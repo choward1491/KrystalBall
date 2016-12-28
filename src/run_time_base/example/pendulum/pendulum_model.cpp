@@ -6,10 +6,12 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/example/pendulum/pendulum_model.hpp>
-#include <run_time_base/printer/history_printer.hpp>
-#include <run_time_base/model/model_state.hpp>
+
+#include "pendulum_model.hpp"
+#include "history_printer.hpp"
+#include "model_state.hpp"
 #include <math.h>
+#include <stdio.h>
 
 namespace pendulum {
     

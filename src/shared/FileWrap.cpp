@@ -6,7 +6,7 @@
 //  Copyright © 2015 Christian Howard. All rights reserved.
 //
 
-#include "shared/FileWrap.hpp"
+#include "FileWrap.hpp"
 
 //FILE* fp;
 //enum AccessMode { Read=0, Write, Append, ReadUpdate, WriteUpdate, AppendUpdate };

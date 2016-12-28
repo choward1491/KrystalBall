@@ -30,8 +30,8 @@
 #ifndef sim_scheduler_hpp
 #define sim_scheduler_hpp
 
-#include <Heap/Heap.hpp>
-#include <run_time_base/model/discrete_model.hpp>
+#include "Heap/Heap.hpp"
+#include "discrete_model.hpp"
 
 class fraction;
 typedef fraction Time;

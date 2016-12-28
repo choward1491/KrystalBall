@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <ExplicitEuler.hpp>
+#include "ExplicitEuler.hpp"
 
 ExplicitEuler::ExplicitEuler():ButcherIntegrator(){
     btable.resize(1);

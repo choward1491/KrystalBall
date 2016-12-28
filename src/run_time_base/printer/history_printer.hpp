@@ -30,7 +30,7 @@
 #ifndef history_printer_hpp
 #define history_printer_hpp
 
-#include <run_time_base/model/discrete_model.hpp>
+#include "discrete_model.hpp"
 #include <string>
 
 namespace print {

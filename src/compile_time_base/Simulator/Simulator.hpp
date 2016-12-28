@@ -30,10 +30,10 @@
 #ifndef TemplateSimulator_h
 #define TemplateSimulator_h
 
-#include <ModelList.hpp>
-#include <SimState.hpp>
-#include <SimTime.hpp>
-#include <NumericIntegration.hpp>
+#include "ModelList.hpp"
+#include "SimState.hpp"
+#include "SimTime.hpp"
+#include "NumericIntegration.hpp"
 
 class TimeStep : public DiscreteModel {};
 
@@ -196,7 +196,7 @@ private:
 
 
 
-#include <Simulator_Impl.hpp>
+#include "Simulator_Impl.hpp"
 
 
 #endif /* TemplateSimulator_h */

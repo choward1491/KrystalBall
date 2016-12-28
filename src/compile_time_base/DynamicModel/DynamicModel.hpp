@@ -32,11 +32,11 @@
 #define DynamicModel_hpp
 
 #include <stdio.h>
-#include <SimExceptions.hpp>
+#include "SimExceptions.hpp"
 #include <string>
-#include <PreciseTime.h>
-#include <prng.hpp>
-#include <ModelState.hpp>
+#include "PreciseTime.h"
+#include "prng.hpp"
+#include "ModelState.hpp"
 
 
 typedef PRNG Rand;

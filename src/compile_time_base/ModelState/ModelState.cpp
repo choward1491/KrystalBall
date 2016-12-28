@@ -6,8 +6,8 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <ModelState.hpp>
-#include <SimExceptions.hpp>
+#include "ModelState.hpp"
+#include "SimExceptions.hpp"
 /*
 double * ref;
 size_t ndim;

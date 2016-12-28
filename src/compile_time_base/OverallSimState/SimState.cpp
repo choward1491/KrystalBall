@@ -6,7 +6,7 @@
 //  Copyright © 2015 Christian Howard. All rights reserved.
 //
 
-#include <SimState.hpp>
+#include "SimState.hpp"
 
 
 SimState::SimState(){

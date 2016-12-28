@@ -992,6 +992,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					LOCAL,
+				);
 				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = (
 					/Users/christianjhoward/Documents/ProgrammingProjects/CPlusPlus_Projects/ConfigReader/src,
@@ -1009,6 +1014,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_PREPROCESSOR_DEFINITIONS = LOCAL;
 				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = (
 					/Users/christianjhoward/Documents/ProgrammingProjects/CPlusPlus_Projects/ConfigReader/src,

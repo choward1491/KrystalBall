@@ -6,9 +6,8 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <iostream>
-#include <compile_time_base/Examples/Pendulum/PendulumSim.hpp>
-#include <run_time_base/example/pendulum/pendulum_sim.hpp>
+#include "PendulumSim.hpp"
+#include "pendulum_sim.hpp"
 
 
 int main(int argc, const char * argv[]) {
@@ -18,9 +17,6 @@ int main(int argc, const char * argv[]) {
     pendulum::simulation psim;
     psim.willWriteSimHistory(false);
     psim.run();
-    
-    
-    
     
     return 0;
 }

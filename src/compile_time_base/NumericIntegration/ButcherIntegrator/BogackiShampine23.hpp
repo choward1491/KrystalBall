@@ -30,7 +30,7 @@
 #ifndef BogackiShampine23_hpp
 #define BogackiShampine23_hpp
 
-#include <ButcherIntegrator.hpp>
+#include "ButcherIntegrator.hpp"
 
 class BogackiShampine23 : public ButcherIntegrator {
 public:

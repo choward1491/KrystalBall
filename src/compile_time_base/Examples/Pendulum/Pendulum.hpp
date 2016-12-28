@@ -10,10 +10,10 @@
 #define Pendulum_hpp
 
 #include <stdio.h>
-#include <DynamicModel.hpp>
-#include <SimState.hpp>
+#include "DynamicModel.hpp"
+#include "SimState.hpp"
 #include <math.h>
-#include <Constants.hpp>
+#include "Constants.hpp"
 
 
 

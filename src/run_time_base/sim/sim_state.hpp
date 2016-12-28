@@ -31,10 +31,10 @@
 #define sim_state_hpp_
 
 
-#include <run_time_base/sim/sim_scheduler.hpp>
-#include <run_time_base/model/discrete_model.hpp>
+#include "sim_scheduler.hpp"
+#include "discrete_model.hpp"
 #include <string>
-#include <stdint.h>
+#include "stdint.h"
 
 class fraction;
 typedef fraction Time;

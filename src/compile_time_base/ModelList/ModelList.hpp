@@ -31,9 +31,9 @@
 #define ModelList_hpp
 
 #include <stdio.h>
-#include <DynamicModel.hpp>
-#include <DiscreteModel.hpp>
-#include <Scheduler.hpp>
+#include "DynamicModel.hpp"
+#include "DiscreteModel.hpp"
+#include "Scheduler.hpp"
 #include <vector>
 
 class ModelList {

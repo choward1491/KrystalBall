@@ -9,9 +9,9 @@
 
 #include <vector>
 #include <string>
-#include <run_time_base/printer/history_printer.hpp>
-#include <fraction/fraction.hpp>
-#include <shared/FileWrap.hpp>
+#include "history_printer.hpp"
+#include "fraction.hpp"
+#include "FileWrap.hpp"
 
 namespace print {
 #define HEADER template<typename T>

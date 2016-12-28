@@ -30,7 +30,6 @@
 #ifndef butcher_table_hpp
 #define butcher_table_hpp
 
-#include <stdio.h>
 #include <vector>
 
 namespace integrate {

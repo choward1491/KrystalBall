@@ -9,13 +9,13 @@
 #ifndef PendulumSim_hpp
 #define PendulumSim_hpp
 
-#include <Simulator.hpp>
-#include <Pendulum.hpp>
-#include <ExplicitEuler.hpp>
-#include <RungeKutta4.hpp>
-#include <ExplicitTrapezoidal.hpp>
-#include <Timer.hpp>
-#include <RKCashKarp.hpp>
+#include "Simulator.hpp"
+#include "Pendulum.hpp"
+#include "ExplicitEuler.hpp"
+#include "RungeKutta4.hpp"
+#include "ExplicitTrapezoidal.hpp"
+#include "Timer.hpp"
+#include "RKCashKarp.hpp"
 
 
 class PendulumSim : public Simulator<PendulumSim,RKCashKarp> {
@@ -26,7 +26,7 @@ public:
         std::string historyFile("/Users/christianjhoward/history.txt");
         setSimHistoryPath(historyFile);
         state.printFrequency = 10;
-        numMC = 10000;
+        numMC = 1000000;
         writeSimHistory = false;
         integrator.setTolerance(1e-10);
     }
@@ -40,7 +40,7 @@ public:
         
     }
     bool _finishedSimulation( SimState & state ) const{
-        return getTime() > 20;
+        return getTime() > 1;
     }
     void _finalizeMonteCarloRun(){
         //printf("Finished #%i Monte Carlo run!\n",static_cast<int>(getCompletedMC()));

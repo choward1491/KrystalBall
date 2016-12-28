@@ -6,7 +6,7 @@
 //  Copyright © 2015 Christian Howard. All rights reserved.
 //
 
-#include <ModelList.hpp>
+#include "ModelList.hpp"
 
 ModelList::ModelList(){
     numStates = 0;

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/integrator/explicit_euler.hpp>
+#include "explicit_euler.hpp"
 
 namespace integrate {
     

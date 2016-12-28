@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <RungeKutta4.hpp>
+#include "RungeKutta4.hpp"
 
 RungeKutta4::RungeKutta4():ButcherIntegrator(){
     btable.resize(4);

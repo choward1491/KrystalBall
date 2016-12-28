@@ -30,7 +30,7 @@
 #ifndef runge_kutta4_hpp
 #define runge_kutta4_hpp
 
-#include <run_time_base/integrator/butcher_integrator.hpp>
+#include "butcher_integrator.hpp"
 
 namespace integrate {
     

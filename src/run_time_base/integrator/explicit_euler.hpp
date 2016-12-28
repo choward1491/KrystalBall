@@ -30,7 +30,7 @@
 #ifndef explicit_euler_hpp
 #define explicit_euler_hpp
 
-#include <run_time_base/integrator/butcher_integrator.hpp>
+#include "butcher_integrator.hpp"
 
 namespace integrate {
     

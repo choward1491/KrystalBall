@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Howard. All rights reserved.
 //
 
-#include <run_time_base/integrator/butcher_table.hpp>
+#include "butcher_table.hpp"
 
 namespace integrate {
     namespace table {

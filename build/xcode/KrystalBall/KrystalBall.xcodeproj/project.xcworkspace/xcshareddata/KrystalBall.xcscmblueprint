@@ -17,13 +17,13 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1518E9B0-E9D2-40C2-9BE4-9C578120DDF5",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "20B88AE65ACF4BB9BD128C0353C1C21E6B32C37F" : "KrystalBall\/dependencies\/FileWrap\/",
-    "C70CFB262A5A037C64F5E2282601A1F459448C3B" : "KrystalBall\/dependencies\/ConfigReader\/",
+    "C70CFB262A5A037C64F5E2282601A1F459448C3B" : "ConfigReader\/",
     "1CC74749AA400057B98BAC82757A89DA9C5E8A2F" : "KrystalBall\/dependencies\/Geom3\/",
     "C131C476896A33A99026629DC672FF9D7DA1100A" : "KrystalBall\/dependencies\/TestAutomation\/",
     "849198FAB5B8611CF0F678CD57D6C4B4FA484B94" : "KrystalBall\/",
-    "1FC39AAC173625F0FE4B9411A1560DAF6A5C0F45" : "KrystalBall\/dependencies\/Numbers\/",
+    "1FC39AAC173625F0FE4B9411A1560DAF6A5C0F45" : "Numbers\/",
     "3ED4434BCF35D1C11AD3B44B38C87192E724CCA2" : "KrystalBall\/dependencies\/Timer\/",
-    "4243EAF92C599029FE186FBAD741554A7AD5453D" : "KrystalBall\/dependencies\/Bones\/",
+    "4243EAF92C599029FE186FBAD741554A7AD5453D" : "Bones\/",
     "2FEC591E023291C8810E9071A4DF87CA8CA4B90B" : "KrystalBall\/dependencies\/MetaLA\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "KrystalBall",

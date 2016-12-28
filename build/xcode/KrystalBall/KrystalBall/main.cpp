@@ -7,15 +7,14 @@
 //
 
 #include <iostream>
-#include "PendulumSim.hpp"
-#include "pendulum_sim.hpp"
+#include <compile_time_base/Examples/Pendulum/PendulumSim.hpp>
+#include <run_time_base/example/pendulum/pendulum_sim.hpp>
 
 
 int main(int argc, const char * argv[]) {
     PendulumSim psim2;
     psim2.runSim();
     
-    // bugs when run with release
     pendulum::simulation psim;
     psim.willWriteSimHistory(false);
     psim.run();

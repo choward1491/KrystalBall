@@ -10,8 +10,8 @@
 #include "sim_scheduler.hpp"
 #include "history_printer.hpp"
 #include "PreciseTime.h"
-#include "parser/parser.hpp"
-#include "prng/prng.hpp"
+#include "parser.hpp"
+#include "prng.hpp"
 #include <vector>
 
 typedef PRNG RNG;

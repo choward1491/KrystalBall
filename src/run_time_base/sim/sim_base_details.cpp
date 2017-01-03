@@ -185,7 +185,7 @@ namespace sim {
         discrete::model<num_type> * d_ptr = nullptr;
         sim::scheduler<num_type> & s = state.getScheduler();
         Time & currentTime  = state.getTime();
-        Time & nextTime     = s.getNextTime();
+        Time   nextTime     = s.getNextTime();
         
         
         // 1) get all discrete models that happen at time t_{i+1}

@@ -30,7 +30,7 @@
 #ifndef sim_scheduler_hpp
 #define sim_scheduler_hpp
 
-#include "Heap/Heap.hpp"
+#include "Heap.hpp"
 #include "discrete_model.hpp"
 
 class fraction;

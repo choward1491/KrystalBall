@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="cpp_api">
+      <UniqueIdentifier>{86ed19a3-0767-4e84-90c8-c1048c746a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\event_handler">
+      <UniqueIdentifier>{0d939d3d-a7c7-4bcc-8e97-fa76f782fd07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\models">
+      <UniqueIdentifier>{95d891f4-a4bc-4f54-a8da-e603bdf49fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\models\discrete">
+      <UniqueIdentifier>{33b05a13-1449-48e5-bb41-ad1940d1c96d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\models\discrete\writer">
+      <UniqueIdentifier>{d6661f4d-f292-4759-9429-fb0effaa8d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\models\differential">
+      <UniqueIdentifier>{8e38ee3d-29eb-480d-8c64-5d809cb8bdb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\Monte Carlo Methods">
+      <UniqueIdentifier>{c747b239-b364-427c-bdf1-371ff0bb025b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\time_integration">
+      <UniqueIdentifier>{727e94a5-8c60-40c9-a6b2-83eaabf0d00b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\time_integration\crtp">
+      <UniqueIdentifier>{b702cc2e-954b-4142-9616-73f6975f920d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\time_integration\runtime">
+      <UniqueIdentifier>{8ccf78a3-14d0-4d53-87a0-9cd07fc2f21d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\simulation">
+      <UniqueIdentifier>{b6a5d0aa-ba3b-45fb-93e2-1fcd2af9db02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\simulation\simulator">
+      <UniqueIdentifier>{8a14e307-0a1c-4dca-9af5-d1fcc4f46a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\simulation\polymorphism_macros">
+      <UniqueIdentifier>{d1bd9650-5d62-4c4b-9eca-f4fc4d29b208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\testing">
+      <UniqueIdentifier>{c7d4f152-d9d1-41f3-adf0-e559130e7f2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\testing\runtime_diffeq">
+      <UniqueIdentifier>{9aa2bfcd-5e6b-45de-813c-18edaae95450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\testing\crtp_diffeq">
+      <UniqueIdentifier>{bfdafa5f-865c-4f2a-a450-fb3cf3209c99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp_api\utility">
+      <UniqueIdentifier>{bf485d3a-0b6b-4620-9369-275c1ff13c75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api">
+      <UniqueIdentifier>{734e3c50-71c2-421d-9400-c9c62d7d11d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\event_handler">
+      <UniqueIdentifier>{344ee1c6-6b63-4b5f-87c6-d0bf813837e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\models">
+      <UniqueIdentifier>{3a28177d-d24a-4d2c-a56a-0d52b6721b11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\simulation">
+      <UniqueIdentifier>{acc5d55d-c1ce-4bbb-ae3c-d04e7846813c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\testing">
+      <UniqueIdentifier>{4e08ca8d-9f74-4cca-9320-10bed15aca70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\time_integration">
+      <UniqueIdentifier>{d6ea6ded-70ed-440a-9b60-5f3a2611a3a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\utility">
+      <UniqueIdentifier>{d3611137-0a8b-4b1f-bfe5-e55dccb96f4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\Monte Carlo Methods">
+      <UniqueIdentifier>{41e7d546-9823-494d-8d35-c70765378b6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\models\differential">
+      <UniqueIdentifier>{d5e2b57f-7968-4748-9781-e091b3d5c8cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_api\models\discrete">
+      <UniqueIdentifier>{4c2dd122-8621-4070-afee-031b9d0b0d1a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="kb_writer.hpp">
+      <Filter>cpp_api\models\discrete\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_csv_writer.hpp">
+      <Filter>cpp_api\models\discrete\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_db_writer.hpp">
+      <Filter>cpp_api\models\discrete\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="kahan_number.hpp">
+      <Filter>cpp_api\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_explicit_euler.hpp">
+      <Filter>cpp_api\time_integration\runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_base_integration.hpp">
+      <Filter>cpp_api\time_integration\runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_heap.hpp">
+      <Filter>cpp_api\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_discrete_model.hpp">
+      <Filter>cpp_api\models\discrete</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_differential_model.hpp">
+      <Filter>cpp_api\models\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_differential_model_crtp.hpp">
+      <Filter>cpp_api\models\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_variadic_diffeq_bundle.hpp">
+      <Filter>cpp_api\models\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_explicit_euler_crtp.hpp">
+      <Filter>cpp_api\time_integration\crtp</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_monte_carlo_method.hpp">
+      <Filter>cpp_api\Monte Carlo Methods</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_test_pendulum_dyn.hpp">
+      <Filter>cpp_api\testing\runtime_diffeq</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_test_pendulum_sim.hpp">
+      <Filter>cpp_api\testing\runtime_diffeq</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_test_pendulum_sim_ctdq.hpp">
+      <Filter>cpp_api\testing\crtp_diffeq</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_test_pendulum_dyn_ctdq.hpp">
+      <Filter>cpp_api\testing\crtp_diffeq</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_rk4_crtp.hpp">
+      <Filter>cpp_api\time_integration\crtp</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_event_handler_fast.hpp">
+      <Filter>cpp_api\event_handler</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_event_handler_adapt.hpp">
+      <Filter>cpp_api\event_handler</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_simulator_polymorphism.hpp">
+      <Filter>cpp_api\simulation\polymorphism_macros</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_simulator_polymorphism_ctdiffeq.hpp">
+      <Filter>cpp_api\simulation\polymorphism_macros</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_simulator.hpp">
+      <Filter>cpp_api\simulation\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_simulator_ctdiffeq.hpp">
+      <Filter>cpp_api\simulation\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="kb_c_differential_model.h">
+      <Filter>c_api\models\differential</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+</Project>

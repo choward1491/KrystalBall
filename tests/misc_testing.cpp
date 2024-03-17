@@ -3,6 +3,9 @@
 */
 #include <iostream>
 #include "absl/status/status.h"
+#include "sim/runtime/discrete_model.h"
+
+
 
 int main(int argc, char** argv){
 

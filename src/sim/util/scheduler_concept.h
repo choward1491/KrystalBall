@@ -18,7 +18,7 @@ template<typename T>
 concept DiscreteScheduler = requires(T a, std::vector<::runtime::DiscreteModel*> models, ::runtime::DiscreteModel* model)
 {
   {a.GetNextTimeEvent()} -> std::same_as<absl::StatusOr<std::int64_t>>;
-  {a.GetAndRemoveEventsAtTime(std::int64_t(1), models)} -> std::same_as<absl::Status>;
+  {a.GetAndRemoveEventsAtTime(models)} -> std::same_as<absl::Status>;
   {a.AddEventTimeWithModel(model->GetNextTimeUpdate(std::int64_t(1)), model)} -> std::same_as<absl::Status>;
 };
 

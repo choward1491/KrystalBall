@@ -11,7 +11,7 @@
 #include "sim/runtime/discrete_model.h"
 #include "sim/util/scheduler_concept.h"
 
-namespace util::schedulers {
+namespace sim::util::schedulers {
 
 // must implement ::util::DiscreteScheduler concept
 class MinHeapScheduler {

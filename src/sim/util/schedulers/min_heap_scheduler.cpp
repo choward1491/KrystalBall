@@ -11,7 +11,7 @@
 #include "sim/runtime/discrete_model.h"
 #include "sim/util/schedulers/min_heap_scheduler.h"
 
-namespace util::schedulers {
+namespace sim::util::schedulers {
 
 absl::StatusOr<std::int64_t> MinHeapScheduler::GetNextTimeEvent() {
   if( min_heap_.empty() ){

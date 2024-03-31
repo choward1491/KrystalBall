@@ -1,0 +1,4 @@
+add_library(sim_util INTERFACE monte_carlo_concept.h scheduler_concept.h)
+add_subdirectory(schedulers)
+add_subdirectory(monte_carlo_models)
+target_link_libraries(sim_util INTERFACE absl::status sim_schedulers sim_monte_carlo_models)

@@ -1,8 +1,0 @@
-﻿  main.cpp
-..\..\..\..\src2\main.cpp(21): warning C4477: 'printf' : format string '%lf' requires an argument of type 'double', but variadic argument 1 has type 'std::chrono::duration<double,std::ratio<1,1>>'
-..\..\..\..\src2\main.cpp(29): warning C4477: 'printf' : format string '%lf' requires an argument of type 'double', but variadic argument 1 has type 'std::chrono::duration<double,std::ratio<1,1>>'
-  Generating code
-  All 63 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  KrystalBall.vcxproj -> C:\Users\howar\OneDrive\Documents\GitHub\KrystalBall\build\vs15\KrystalBall\Release\KrystalBall.exe
-  KrystalBall.vcxproj -> C:\Users\howar\OneDrive\Documents\GitHub\KrystalBall\build\vs15\KrystalBall\Release\KrystalBall.pdb (Full PDB)

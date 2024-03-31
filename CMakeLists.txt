@@ -6,19 +6,33 @@ project(KrystalBall VERSION 0.1
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# define variables to help with finding needed headers
-set(ABSEIL_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/external/abseil-cpp/)
-set(GTEST_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/include)
-set(GMOCK_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googlemock/include)
-set(EXTERNAL_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/external)
-set(PROJ_SRC_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+# include some required dependencies
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG        origin/main
+)
+FetchContent_Declare(
+        abseil
+        GIT_REPOSITORY  https://github.com/abseil/abseil-cpp.git
+        GIT_TAG         origin/master
+)
+FetchContent_Declare(
+        statusmacros
+        GIT_REPOSITORY https://github.com/choward1491/status_macros.git
+        GIT_TAG        origin/main
+)
+FetchContent_MakeAvailable(googletest abseil statusmacros)
 
-# include header
-include_directories(external/abseil-cpp/)
-include_directories(external)
-include_directories(external/googletest/googletest/include)
-include_directories(external/googletest/googlemock/include)
-include_directories(src/)
+# include headers
+include_directories(
+        src/
+        ${abseil_SOURCE_DIR}
+        ${statusmacros_SOURCE_DIR}
+        ${googletest_SOURCE_DIR}/googletest/include
+        ${googletest_SOURCE_DIR}/googlemock/include
+)
 
 # add testing, if possible
 option(PACKAGE_TESTS "Build the tests" ON)
@@ -30,4 +44,3 @@ endif()
 
 # add the subdirectories with stuff to be built
 add_subdirectory(src)
-add_subdirectory(external)

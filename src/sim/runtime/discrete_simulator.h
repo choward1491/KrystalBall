@@ -83,6 +83,7 @@ class DiscreteSimulator {
     if (model==nullptr) {
       return absl::InvalidArgumentError("DiscreteSimulator::AddModel Error: model is null");
     }
+    model->SetMonteCarloModel(&mc_model_);
     models_.push_back(model);
     return absl::OkStatus();
   }

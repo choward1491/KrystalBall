@@ -9,25 +9,25 @@
 #include <vector>
 
 #include "sim/runtime/discrete_model.h"
-#include "sim/util/scheduler_concept.h"
+#include "sim/util/schedulers/scheduler_interface.h"
 
 namespace sim::util::schedulers {
 
 // must implement ::util::DiscreteScheduler concept
-class MinHeapScheduler {
+class MinHeapScheduler: public SchedulerInterface {
  public:
 
   MinHeapScheduler() = default;
-  ~MinHeapScheduler() = default;
+  ~MinHeapScheduler() override = default;
 
   // required interface by ::util::DiscreteScheduler concept
-  absl::StatusOr<std::int64_t> GetNextTimeEvent();
-  absl::Status GetAndRemoveEventsAtTime(std::vector<::runtime::DiscreteModel *> &model_list_to_append_to);
-  absl::Status AddEventTimeWithModel(std::int64_t next_time, ::runtime::DiscreteModel *model);
+  absl::StatusOr<std::uint64_t> GetNextTimeEvent() override;
+  absl::Status GetAndRemoveEventsAtTime(std::vector<::runtime::DiscreteModel *> &model_list_to_append_to) override;
+  absl::Status AddEventTimeWithModel(std::uint64_t next_time, ::runtime::DiscreteModel *model) override;
 
  private:
   struct TimeModelPair {
-    std::int64_t time;
+    std::uint64_t time;
     ::runtime::DiscreteModel *model;
     bool operator<(const TimeModelPair &pair) const {
       return pair.time < time;

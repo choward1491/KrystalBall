@@ -149,7 +149,8 @@ class DiscreteSimulator {
       }
       for (DiscreteModel *model : models_to_update_) {
         RETURN_IF_ERROR(model->UpdateStates());
-        RETURN_IF_ERROR(scheduler_.AddEventTimeWithModel(model->GetNextTimeUpdate(next_time), model));
+        ASSIGN_OR_RETURN(std::uint64_t models_next_time, model->GetNextTimeUpdate(next_time));
+        RETURN_IF_ERROR(scheduler_.AddEventTimeWithModel(models_next_time, model));
       }
 
       // update the simulation time

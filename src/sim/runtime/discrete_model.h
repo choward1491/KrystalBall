@@ -13,6 +13,8 @@
 #include "absl/status/status.h"
 #include "absl/status/statusor.h"
 
+#include "sim/util/monte_carlo_models/monte_carlo_interface.h"
+
 namespace runtime {
 
 class DiscreteModel {
@@ -21,7 +23,7 @@ class DiscreteModel {
   using StateNamePair_t = std::pair<std::string_view, StateType_t>;
 
   // default constructors/destructors
-  DiscreteModel() = default;
+  DiscreteModel();
   virtual ~DiscreteModel() = default;
 
   // method for initializing the model to a base case
@@ -57,6 +59,14 @@ class DiscreteModel {
   // this method ensures the model can append that information to list `state_name_list` for
   // printing to a data stream
   virtual absl::Status ExtractDataStreamInfo(std::vector<StateNamePair_t> &state_name_list) const = 0;
+
+  void SetMonteCarloModel(::sim::util::mc_models::MonteCarloModelInterface* mc_model);
+
+ protected:
+  ::sim::util::mc_models::MonteCarloModelInterface* mc_model_;
+  ::sim::util::mc_models::MonteCarloModelInterface* GetMonteCarloModel();
+
+
 
 };
 

@@ -1,4 +1,4 @@
-add_library(sim_runtime)
+add_library(sim_runtime discrete_model.cpp)
 target_sources(sim_runtime PUBLIC
                differential_model.h
                discrete_model.h

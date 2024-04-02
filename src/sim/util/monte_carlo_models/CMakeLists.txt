@@ -1,5 +1,6 @@
 add_library(sim_monte_carlo_models)
 target_sources(sim_monte_carlo_models PUBLIC
+               monte_carlo_interface.h
                fixed_monte_carlo_model.h
                fixed_monte_carlo_model.cpp)
 target_link_libraries(sim_monte_carlo_models PRIVATE absl::status)

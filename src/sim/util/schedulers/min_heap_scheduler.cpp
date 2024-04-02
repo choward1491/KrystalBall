@@ -13,14 +13,14 @@
 
 namespace sim::util::schedulers {
 
-absl::StatusOr<std::int64_t> MinHeapScheduler::GetNextTimeEvent() {
+absl::StatusOr<std::uint64_t> MinHeapScheduler::GetNextTimeEvent() {
   if( min_heap_.empty() ){
     return absl::InternalError("No more events in scheduler, error");
   }
   return min_heap_.top().time;
 }
 absl::Status MinHeapScheduler::GetAndRemoveEventsAtTime(std::vector<::runtime::DiscreteModel *> &model_list_to_append_to) {
-  ASSIGN_OR_RETURN(const std::int64_t smallest_time, GetNextTimeEvent());
+  ASSIGN_OR_RETURN(const std::uint64_t smallest_time, GetNextTimeEvent());
   const size_t num_events = min_heap_.size();
   for(size_t i = 0; i < num_events; ++i){
     if( min_heap_.top().time != smallest_time ){
@@ -35,7 +35,7 @@ absl::Status MinHeapScheduler::GetAndRemoveEventsAtTime(std::vector<::runtime::D
   }
   return absl::OkStatus();
 }
-absl::Status MinHeapScheduler::AddEventTimeWithModel(std::int64_t next_time, ::runtime::DiscreteModel *model) {
+absl::Status MinHeapScheduler::AddEventTimeWithModel(std::uint64_t next_time, ::runtime::DiscreteModel *model) {
   if( model ==nullptr ){
     return absl::InvalidArgumentError("Discrete model passed in is null, error.");
   }

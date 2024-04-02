@@ -18,7 +18,7 @@ template<typename T>
 concept MonteCarloModeler = requires(T a)
 {
   a.ResetMonteCarloProgress();
-  {a.AllMonteCarloSimsDone} -> std::same_as<bool>;
+  {a.AllMonteCarloSimsDone()} -> std::same_as<bool>;
   a.UpdateMonteCarloProgress();
 };
 

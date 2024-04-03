@@ -8,27 +8,34 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # include some required dependencies
 include(FetchContent)
-FetchContent_Declare(
-        googletest
-        GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG        origin/main
-)
-FetchContent_Declare(
-        abseil
-        GIT_REPOSITORY  https://github.com/abseil/abseil-cpp.git
-        GIT_TAG         origin/master
-)
+#FetchContent_Declare(
+#        googletest
+#        GIT_REPOSITORY https://github.com/google/googletest.git
+#        GIT_TAG        origin/main
+#)
+#FetchContent_Declare(
+#        abseil
+#        GIT_REPOSITORY  https://github.com/abseil/abseil-cpp.git
+#        GIT_TAG         origin/master
+#)
 FetchContent_Declare(
         statusmacros
         GIT_REPOSITORY https://github.com/choward1491/status_macros.git
         GIT_TAG        origin/main
 )
-FetchContent_MakeAvailable(googletest abseil statusmacros)
+FetchContent_MakeAvailable(
+                            #googletest
+                           statusmacros
+                           #abseil
+                           )
+
+find_package(absl REQUIRED)
+find_package(GTest REQUIRED)
 
 # include headers
 include_directories(
         src/
-        ${abseil_SOURCE_DIR}
+        ${absl_INCLUDE_DIRS}
         ${statusmacros_SOURCE_DIR}
         ${googletest_SOURCE_DIR}/googletest/include
         ${googletest_SOURCE_DIR}/googlemock/include
